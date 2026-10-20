@@ -11,8 +11,11 @@
     "lint:md": "markdownlint-cli2",
     "check:docs": "node scripts/validate-docs.mjs",
     "check:artifacts": "node scripts/validate-artifacts.mjs",
+    "check:llms": "node scripts/validate-llms.mjs",
+    "check:llms-stability": "node scripts/check-llms-stability.mjs",
+    "check:live": "node scripts/smoke-pages.mjs",
     "test:checks": "node --test scripts/tests/*.test.mjs",
-    "validate": "npm run lint:md && npm run check:docs && npm run typecheck && npm run test:checks && npm run build && npm run check:artifacts"
+    "validate": "npm run lint:md && npm run check:docs && npm run typecheck && npm run test:checks && npm run build && npm run check:artifacts && npm run check:llms && npm run check:llms-stability"
   },
   "dependencies": {
     "@docusaurus/core": "3.10.2",

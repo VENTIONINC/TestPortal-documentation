@@ -29,5 +29,3 @@ jobs:
         run: npm ci
       - name: Validate available documentation and production output
         run: npm run validate
-      # TP-14 integration must add strict LLM export validation to the shared
-      # validate command before TP-15 is complete or publication is enabled.

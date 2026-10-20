@@ -89,4 +89,4 @@ In the built documentation at its project base path, browser checks confirmed th
 7. Generate a dedicated MCP token, connect with the documented transport, compare `tools/list` against the 17-tool reference, inspect read results, and exercise selected writes only on authorized disposable data. Record tool `isError`/bulk outcomes separately from HTTP success.
 8. Human-review all public content and sanitize any future screenshots before adding them to the manifest. Publication/settings and source-repository changes remain separately authorized work.
 
-LLM exports, deployment and final TP-15 integration remain owned by the next group. Consume the 25 approved routes from `public-content.json`, not this record, migration inventory or tests. No deployment workflow or settings were changed here.
+The final group's LLM exports and TP-15 integration consume the 25 approved routes from `public-content.json`, excluding this record, migration inventory and tests. See FINAL-ACCEPTANCE.md for current TP-14/TP-16/TP-17 implementation and validation evidence. Publication, settings and ecosystem README changes remain gated separately.

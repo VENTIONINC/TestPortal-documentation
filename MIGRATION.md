@@ -84,9 +84,9 @@ Internal specs/OpenSpec, engineering conventions, architecture maps and design d
 
 - TP-8 handoff: homepage now links directly to the implemented first-report tutorial; sidebar/hub links reach all 25 selected pages.
 - TP-9 handoff: implemented pages and final source/public-review status are traced here. New compatibility findings and verification evidence are recorded in CONTENT-VERIFICATION.md; released-package availability and live product acceptance are not claimed.
-- TP-15: initial source/example/build/link/public-output checks can run now. TP-14 must supply LLM exports and strict missing/invalid artifact checks; final TP-15 acceptance remains open until all content and LLM integration are verified.
+- TP-14/TP-15: all 25 selected pages now feed resolved-route Markdown exports and both LLM files. Strict content/coverage/link/anchor/exclusion checks and repeated production-build byte comparisons are integrated into shared PR/deployment validation. Final-group evidence and remaining live gates are recorded in FINAL-ACCEPTANCE.md.
 - Ticket descriptions are supplied in this chat; current tracker dependencies have not been changed. TP-9 depends on TP-8; TP-15 lists TP-14. These remain separate tickets even if the foundation shares a branch/PR.
-- Deployment, repository visibility/settings, protected branch changes and README writes in other repositories require explicit approval. No deployment workflow is enabled by this foundation.
+- TP-16/TP-17: deployment workflow and contribution guidance are prepared in the documentation repository. Publication, repository visibility/settings, protected branch changes and README writes in other repositories require explicit approval. The main-only workflow has not been published or live-verified; see FINAL-ACCEPTANCE.md.
 
 ## Foundation verification
 
@@ -94,4 +94,4 @@ Local verification on 2026-10-20 uses Node 22.22.2 and npm 10.9.7. Production ou
 
 Browser checks on the built site confirmed desktop and 390px mobile layout, both themes, navigation drawer, search suggestions, result navigation and full search-page reload under the project path. These verify the documentation shell, not authenticated Test Portal workflows. The content group subsequently added the first-report homepage link; see CONTENT-VERIFICATION.md for content checks and remaining live gates.
 
-No site was deployed, repository settings changed, ticket mutated, or source repository modified. Final LLM artifact checks and full product-guide live acceptance remain outstanding. See the README dependency-audit section for remaining transitive advisories.
+No site was deployed, repository settings changed, ticket mutated, or source repository modified. The final group adds LLM artifact checks; full product-guide live acceptance remains outstanding. See FINAL-ACCEPTANCE.md for current evidence and the README dependency-audit section for remaining transitive advisories.
