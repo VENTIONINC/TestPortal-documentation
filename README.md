@@ -1,6 +1,6 @@
 # Test Portal documentation
 
-English public product documentation for Test Portal, built with Docusaurus Classic 3.10.2, TypeScript, React and MDX. This foundation covers TP-8, TP-9 and the initial TP-15 checks.
+English public product documentation for Test Portal, built with Docusaurus Classic 3.10.2, TypeScript, React and MDX. The foundation covers TP-8, TP-9 and the initial TP-15 checks. Public guides for TP-10–TP-13 cover onboarding/CLI, framework/CI integrations, REST/MCP and UI troubleshooting.
 
 The configured future site is <https://ventioninc.github.io/TestPortal-documentation/>. Publication has not been enabled or verified.
 
@@ -54,6 +54,18 @@ CLI compatibility checks use the audited command snapshot in `scripts/cli-contra
 Public checks in `scripts/checks.mjs` detect recognizable tokens, private keys, credential literals, local paths, internal domains and excluded source references. New publication inputs require an explicit manifest change. The checks report rule names rather than credential values. Binary image assets currently require extending the reviewed validation policy; no product screenshots are bundled. Automated scanning does not establish confidentiality or replace human public-content review.
 
 External URLs are not fetched in blocking CI. Review them separately with bounded timeouts/retries when needed. The PR workflow has `contents: read`, disables persisted checkout credentials, uses pinned actions, and has no deployment or production-instance access.
+
+## Content verification
+
+[CONTENT-VERIFICATION.md](CONTENT-VERIFICATION.md) records per-ticket acceptance, audited source commits, generated-report conversion checks and remaining external gates. It is repository bookkeeping, outside public site inputs. The normalizer regression checks execute the actual code blocks in the Jest/Cypress guides and reject lost tests.
+
+For an optional local runtime check, supply an independently built CLI at the audited commit and a directory containing the generated report fixtures described in that record:
+
+```bash
+node scripts/verify-cli-examples.mjs "$TEST_PORTAL_AUDITED_CLI" "$TEST_PORTAL_EXAMPLE_REPORTS"
+```
+
+This check uses a local HTTP mock, never a production instance; it requires permission to bind a loopback port. The regular `npm run validate` command does not require source checkouts, registry credentials or a running Test Portal instance.
 
 ## Separate live verification
 

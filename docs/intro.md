@@ -1,25 +1,27 @@
 ---
-title: Test Portal
-description: Understand the Test Portal ecosystem and its main user workflows.
+title: What is Test Portal?
+description: Bring test reports together and investigate executions, results and issues.
 slug: /intro
 sidebar_position: 1
 ---
 
-# Test Portal
+# What is Test Portal?
 
-Test Portal brings test execution reports together so teams can inspect results and investigate failures. Its web application provides access to results, executions, and issues within a selected project.
+Test Portal brings test-run data into one place so teams can inspect outcomes, investigate failures and associate recurring errors with issues. Use it to review local or CI runs, compare reported outcomes, and give people or compatible MCP clients a shared view of test data.
 
-## Choose a starting point
+## How the parts fit together
 
-- [Getting Started](getting-started/index.md): prepare access to an existing instance and project.
-- [Integrations](integrations/index.md): choose a report format for your framework.
-- [CLI](cli/index.md): understand report conversion and submission.
-- [API](api/index.md): understand authentication and report uploads.
-- [MCP](mcp/index.md): connect a compatible client to your test data.
-- [User Guides](guides/index.md): understand how results and issues fit together.
+- Your test framework generates a source report.
+- The integration CLI converts a supported report into CTRF and can submit it to an existing instance.
+- The backend accepts report uploads through authenticated REST endpoints and exposes the selected MCP interface.
+- The web application displays project-scoped results, execution context and issue investigations.
 
-## The ecosystem
+An execution represents a run; a spec identifies a test; a result records an outcome in a run. An issue describes a failure/cause, and an assumption proposes an association between an issue and a result error. Review and issue category are separate from pass/fail status.
 
-The web application lets you explore test data. The backend accepts reports and provides REST and MCP interfaces. The integration CLI converts framework-specific reports into CTRF and can submit them to a configured upload endpoint.
+## Choose a workflow
 
-An existing Test Portal instance is required to store and explore reports. Converting a report locally with the CLI does not require a running Test Portal instance.
+Start with [your first report](getting-started/first-report.md) if you have an accessible instance, account and project. The [quickstart](getting-started/quickstart.md) connects credentials, installation, conversion, upload and UI verification.
+
+Use [framework integrations](integrations/index.md) for Playwright, Jest or Cypress. Automate reporting with [GitHub Actions](integrations/github-actions.md), or submit existing CTRF using the [REST upload interface](api/report-upload.md). Connect an assistant with [MCP](mcp/getting-started.md) to query data and perform deliberate issue/review operations.
+
+The detailed [CLI reference](cli/commands.md) explains format boundaries and exit behavior. [User guides](guides/index.md) help you inspect imported results and investigate issues. Availability of analysis and sign-in features depends on your instance's configuration and deployed version.

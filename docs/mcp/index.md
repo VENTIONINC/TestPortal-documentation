@@ -20,3 +20,10 @@ An upload API key is intended for report submission and does not replace an MCP 
 Registered tools include result and execution lookup, issue operations, and failure review. Some tools modify data. Review the tools discovered by your client and their input requirements before invoking them.
 
 Tool exports and documentation lists can differ from the tools actually registered by the server. Use the registered tools of your instance when determining availability.
+
+## Guides
+
+- [Connect a client](getting-started.md)
+- [Tool reference](tools.md)
+
+See [troubleshooting](../troubleshooting.md) for symptoms and resolutions.

@@ -20,7 +20,7 @@ export default function Home(): ReactNode {
           <h1>Turn test reports into a clearer picture.</h1>
           <p className="hero__subtitle">Bring test runs together. Explore results. Investigate failures.</p>
           <div className="portal-actions">
-            <Link className="button button--primary button--lg" to="/docs/getting-started">Get started</Link>
+            <Link className="button button--primary button--lg" to="/docs/getting-started/first-report">Upload your first report</Link>
             <Link className="button button--secondary button--lg" to="/docs/intro">Explore Test Portal</Link>
           </div>
         </div>
