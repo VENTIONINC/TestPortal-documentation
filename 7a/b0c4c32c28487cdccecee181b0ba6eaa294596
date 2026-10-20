@@ -1,0 +1,73 @@
+.github/workflows/docs-check.yml
+  s_9fe75e6b93fed1::t_7ee0be418e5d83 1-33
+.gitignore
+  s_9fe75e6b93fed1::t_f02d5881039a5a 1-8
+.markdownlint-cli2.jsonc
+  s_9fe75e6b93fed1::t_4800c78057abbf 1-22
+.nvmrc
+  s_9fe75e6b93fed1::t_380f28df7f2efb 1
+MIGRATION.md
+  s_9fe75e6b93fed1::t_8cc3e12234ccc5 1-97
+README.md
+  s_9fe75e6b93fed1::t_2417bcd96dd8a0 1-89
+docs/api/index.md
+  s_9fe75e6b93fed1::t_3dc63ff308372f 1-22
+docs/cli/index.md
+  s_9fe75e6b93fed1::t_9ee6af86f84416 1-22
+docs/getting-started/index.md
+  s_9fe75e6b93fed1::t_85ff00d899f047 1-23
+docs/guides/index.md
+  s_9fe75e6b93fed1::t_fcc1f63f5f962e 1-22
+docs/integrations/index.md
+  s_9fe75e6b93fed1::t_e100fdaf2a3bd8 1-20
+docs/intro.md
+  s_9fe75e6b93fed1::t_76f0cd47cabac5 1-25
+docs/mcp/index.md
+  s_9fe75e6b93fed1::t_ce08cb394af1be 1-22
+docusaurus.config.ts
+  s_9fe75e6b93fed1::t_d1c930e9eac9e1 1-61
+package-lock.json
+  s_9fe75e6b93fed1::t_eda9e392d9569f 1-19697
+package.json
+  s_9fe75e6b93fed1::t_f6777f6b11f341 1-64
+public-content.json
+  s_9fe75e6b93fed1::t_a9b91bf4607580 1-90
+scripts/checks.mjs
+  s_9fe75e6b93fed1::t_9981bc5407c8e4 1-118
+scripts/cli-contract.json
+  s_9fe75e6b93fed1::t_058f6df3c836c7 1-45
+scripts/tests/checks.test.mjs
+  s_9fe75e6b93fed1::t_963810416010e5 1-42
+scripts/tests/pipeline.test.mjs
+  s_9fe75e6b93fed1::t_b9c9e746504900 1-62
+scripts/validate-artifacts.mjs
+  s_9fe75e6b93fed1::t_be50e3d530379f 1-55
+scripts/validate-docs.mjs
+  s_9fe75e6b93fed1::t_2af66c97b9219f 1-53
+sidebars.ts
+  s_9fe75e6b93fed1::t_448989fff9a91f 1-12
+site-settings.json
+  s_9fe75e6b93fed1::t_ce14b873fc93a6 1-7
+src/css/custom.css
+  s_9fe75e6b93fed1::t_5d656c92d0d8ea 1-27
+src/pages/index.tsx
+  s_9fe75e6b93fed1::t_e504b3a3004028 1-41
+tsconfig.json
+  s_9fe75e6b93fed1::t_a28dc326550129 1-12
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "7ab0c4c32c28487cdccecee181b0ba6eaa294596",
+  "prompts": {},
+  "sessions": {
+    "s_9fe75e6b93fed1": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a15846-9cf4-79d2-ba28-e17283ff78e1",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "Ihar Mikailau <ihar.mikailau@ventionteams.com>"
+    }
+  }
+}
