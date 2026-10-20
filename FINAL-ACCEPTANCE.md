@@ -8,6 +8,8 @@ Implementation starts at `29a68493`, the current `origin/develop` merge of publi
 
 The merged foundation and content record select `VENTIONINC/TestPortal-documentation`, origin `git@github.com.work:VENTIONINC/TestPortal-documentation.git`, with site origin `https://ventioninc.github.io` and base path `/TestPortal-documentation/`. This supersedes the original ticket proposal `TestPortal-docs`. No repository rename, visibility or Pages setting change was made.
 
+Read-only `gh repo view` reports the documentation repository is currently **private**, its default branch is `main`, and the current CLI identity has `ADMIN` permission. The Pages read endpoint returned HTTP 404, so an enabled site was not confirmed. Admin access does not substitute for publication approval. Confirm the organization's Pages plan/policy supports the intended public site from this private repository before enabling it; any visibility change requires separate explicit authorization.
+
 Fresh read-only GitHub API checks confirmed current source `main` commits match the existing verified content baseline:
 
 | Repository | Inspected current default-branch commit |
