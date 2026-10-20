@@ -20,3 +20,11 @@ Setting a webhook URL enables submission even when you also request file output.
 Inspect the upload outcome. In the audited implementation, a failed webhook is logged without necessarily causing a nonzero process exit status. A successful CLI exit alone does not prove the report reached Test Portal.
 
 See the [integration overview](../integrations/index.md) for source formats and the [API overview](../api/index.md) for upload authentication.
+
+## Guides
+
+- [Install the CLI](installation.md)
+- [Configure the CLI](configuration.md)
+- [Command reference](commands.md)
+
+See [troubleshooting](../troubleshooting.md) for symptoms and resolutions.

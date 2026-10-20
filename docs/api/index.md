@@ -20,3 +20,10 @@ Reports are sent as a JSON file in the multipart form field named `report`. The 
 The integration CLI converts framework reports to CTRF before submission. Configure it with a CTRF upload endpoint, rather than a raw framework JSON endpoint.
 
 An MCP connection uses its own Bearer token. See the [MCP overview](../mcp/index.md).
+
+## Guides
+
+- [Authentication](authentication.md)
+- [Upload reports](report-upload.md)
+
+See [troubleshooting](../troubleshooting.md) for symptoms and resolutions.

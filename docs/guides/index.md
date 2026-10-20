@@ -20,3 +20,11 @@ Issues represent problems investigated across test failures. Linked failure info
 ## Before investigating missing results
 
 Confirm that the upload targeted the same instance and project you are viewing. Check the upload response as well as the test command output. See the [API overview](../api/index.md) for the upload interfaces.
+
+## Guides
+
+- [Inspect executions](test-executions.md)
+- [Inspect results](test-results.md)
+- [Investigate issues](issues.md)
+
+See [troubleshooting](../troubleshooting.md) for symptoms and resolutions.

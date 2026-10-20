@@ -68,6 +68,14 @@ export function shellErrors(code, contract) {
   catch { return [...errors, 'cannot parse shell example']; }
   for (let i = 0; i < tokens.length; i++) {
     if (tokens[i] !== 'test-portal-cli' && tokens[i] !== `${contract.packageName}@${contract.version}`) continue;
+    // A pinned package in an npm install command is an installation target,
+    // not a CLI invocation. Keep checking npx/npm exec invocations below.
+    if (tokens[i] === `${contract.packageName}@${contract.version}`) {
+      let start = i - 1;
+      while (start >= 0 && typeof tokens[start] === 'string') start--;
+      const command = tokens.slice(start + 1, i);
+      if (command[0] === 'npm' && ['install', 'i', 'ci'].includes(command[1])) continue;
+    }
     const args = [];
     for (let j = i + 1; j < tokens.length && typeof tokens[j] === 'string'; j++) args.push(tokens[j]);
     const seen = new Map();

@@ -21,3 +21,11 @@ Login behavior depends on the instance configuration. A web login token, an uplo
 ## Choose an integration
 
 Read the [integration overview](../integrations/index.md) to identify the report format, then review the [CLI overview](../cli/index.md) or [API overview](../api/index.md).
+
+## Guides
+
+- [Quickstart](quickstart.md)
+- [Get access and credentials](authentication.md)
+- [Upload your first report](first-report.md)
+
+See [troubleshooting](../troubleshooting.md) for symptoms and resolutions.
