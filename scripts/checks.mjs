@@ -29,7 +29,7 @@ const rules = [
   ['local absolute path', /(?:\/Users\/|\/home\/|\/private\/|\/tmp\/|[A-Z]:\\Users\\)/],
   ['internal domain', /(?:https?:\/\/)?(?:[a-z0-9.-]+\.)?(?:ventionteams\.com|[a-z0-9-]+\.internal|[a-z0-9-]+\.local)\b/i],
   ['internal source reference', /(?:openspec\/|__prompts-tests__\/|docs\/engineering\/|CARTODEX_MAP\.md)/i],
-  ['migration inventory', /MIGRATION\.md/i],
+  ['contributor instructions', /CONTRIBUTING\.md/i],
   ['credential literal', /(?:api[_-]?key|secret|password|token)\s*["']?\s*[:=]\s*["'](?!\$|<|YOUR_|EXAMPLE_|REPLACE_)[A-Za-z0-9_+\/-]{16,}["']/i],
 ];
 export function publicContentErrors(text, label) {

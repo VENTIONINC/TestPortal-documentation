@@ -1,5 +1,5 @@
 {
-  "reviewPolicy": "Explicitly selected and agent-reviewed public inputs; human review remains required in the PR. Adding a file requires a reviewed manifest change.",
+  "reviewPolicy": "Explicitly selected public inputs. Adding a file requires public-content review and a manifest change in the same pull request.",
   "docs": [
     {
       "path": "docs/intro.md",
