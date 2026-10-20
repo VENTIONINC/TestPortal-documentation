@@ -12,6 +12,7 @@ const config: Config = {
   onDuplicateRoutes: 'throw',
   markdown: {hooks: {onBrokenMarkdownLinks: 'throw', onBrokenMarkdownImages: 'throw'}},
   i18n: {defaultLocale: 'en', locales: ['en']},
+  plugins: ['./scripts/llms-plugin.mjs'],
   presets: [['classic', {
     docs: {
       sidebarPath: './sidebars.ts',
