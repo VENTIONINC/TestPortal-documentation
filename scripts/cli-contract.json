@@ -1,0 +1,45 @@
+{
+  "repository": "VENTIONINC/TestPortal-cli",
+  "commit": "6a0ed4754276334d6ced8ee54a6f9384cd4c94a7",
+  "source": "src/cli.ts",
+  "packageName": "@vention-test-portal/test-portal-integration-cli",
+  "version": "1.1.2",
+  "flags": {
+    "-i": true,
+    "--input": true,
+    "-t": true,
+    "--type": true,
+    "-o": true,
+    "--output": true,
+    "--stdout": false,
+    "--webhook": true,
+    "--headers": true,
+    "--method": true,
+    "--timeout": true,
+    "--retries": true,
+    "--retry-delay": true,
+    "--verify-ssl": false,
+    "--no-verify-ssl": false,
+    "--help": false,
+    "-h": false,
+    "--version": false,
+    "-V": false
+  },
+  "providers": [
+    "nunit",
+    "junit",
+    "mocha",
+    "pytest",
+    "cypress",
+    "testng",
+    "vitest",
+    "playwright",
+    "jest"
+  ],
+  "environment": [
+    "TEST_PORTAL_URL",
+    "TEST_PORTAL_API_KEY",
+    "EXECUTION_TYPE",
+    "TEST_ENVIRONMENT"
+  ]
+}
