@@ -13,7 +13,7 @@ const base = new URL(settings.baseUrl, settings.url);
 const expectedHtml = new Set(['index.html', '404.html', 'search.html', ...manifest.docs.map(p => `docs${p.slug}.html`)]);
 for (const path of paths) {
   if (path.endsWith('.html') && !expectedHtml.has(path)) errors.push(`Unexpected public page: ${path}`);
-  if (/(?:^|\/)(?:MIGRATION\.md|README\.md|public-content\.json|scripts|openspec|\.env)(?:\/|$)/i.test(path)) errors.push(`Excluded artifact: ${path}`);
+  if (/(?:^|\/)(?:CONTRIBUTING\.md|README\.md|public-content\.json|scripts|openspec|\.env)(?:\/|$)/i.test(path)) errors.push(`Excluded artifact: ${path}`);
 }
 for (const required of [...expectedHtml, 'sitemap.xml', '.nojekyll']) {
   if (!paths.has(required)) errors.push(`Missing artifact: ${required}`);

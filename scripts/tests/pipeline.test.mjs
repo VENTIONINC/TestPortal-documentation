@@ -49,7 +49,7 @@ test('artifact pipeline rejects missing artifacts, broken targets, bad base path
     ['<a href="/TestPortal-documentation/missing">Broken</a>', /missing target/],
     ['<img src="/assets/missing.svg">', /incorrect base path/],
     ['<a href="#missing">Missing heading</a>', /missing anchor/],
-    ['<p>MIGRATION.md</p>', /migration inventory/],
+    ['<p>CONTRIBUTING.md</p>', /contributor instructions/],
   ]) {
     await write('build/index.html', html);
     const result = run('validate-artifacts.mjs');
@@ -80,7 +80,7 @@ test('LLM pipeline rejects missing, stale, excluded and broken-route artifacts',
   assert.equal(generated.status, 0, generated.stderr);
   assert.equal(run('validate-llms.mjs').status, 0);
   const original = await readFile(join(root, 'build/llms.txt'), 'utf8');
-  for (const text of ['', original.replace('/project/', '/wrong/'), original + '\nimport X from "x";\n', original + '\nMIGRATION.md\n']) {
+  for (const text of ['', original.replace('/project/', '/wrong/'), original + '\nimport X from "x";\n', original + '\nCONTRIBUTING.md\n']) {
     await write('build/llms.txt', text);
     assert.notEqual(run('validate-llms.mjs').status, 0);
   }

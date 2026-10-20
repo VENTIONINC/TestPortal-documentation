@@ -103,4 +103,4 @@ JWT alternatives use the corresponding route and `projectId` shown in [authentic
 
 A proxy can return a different status/body, so distinguish its response from application JSON. A timeout is not proof that no data was saved. Do not blindly retry an uncertain upload: first inspect Results/execution data to avoid duplicate imports. See [troubleshooting](../troubleshooting.md).
 
-These contracts are checked against the recorded source baseline. To complete live acceptance, upload a sanitized report to a disposable project, check status/body/count and find the same execution in the UI; then test a missing/invalid key and malformed report without recording credentials.
+After uploading, check the response status, processed count and execution ID, then find the same execution in the UI. Use a disposable project when testing invalid credentials or malformed reports, and keep credentials out of logs.

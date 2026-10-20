@@ -27,7 +27,7 @@ test('public-content checks reject leaked values and private references', () => 
     '/Users/example/private.txt',
     'https://service.internal/api',
     'https://yt-wod.ventionteams.com',
-    'MIGRATION.md',
+    'CONTRIBUTING.md',
     'docs/engineering/private.md',
     'api_key="' + 's'.repeat(24) + '"',
   ]) assert.ok(publicContentErrors(text, 'fixture').length, text);
