@@ -1,0 +1,93 @@
+CONTENT-VERIFICATION.md
+  s_ee1e4e024d9337::t_73e3287d77d4c8 1-92
+MIGRATION.md
+  s_ee1e4e024d9337::t_d4a65a4cd0aa58 17,19,23-47,66,69,75,85-86,95
+README.md
+  s_ee1e4e024d9337::t_f7544cae52d0f4 3,58-69
+docs/api/authentication.md
+  s_ee1e4e024d9337::t_65e277d1fee355 1-46
+docs/api/index.md
+  s_ee1e4e024d9337::t_0c979ce394f4d9 23-29
+docs/api/report-upload.md
+  s_ee1e4e024d9337::t_e0d83ef90f8d45 1-106
+docs/cli/commands.md
+  s_ee1e4e024d9337::t_4756fced5191a7 1-72
+docs/cli/configuration.md
+  s_ee1e4e024d9337::t_267f2b5cb8f668 1-57
+docs/cli/index.md
+  s_ee1e4e024d9337::t_c5f43aa25f328c 23-30
+docs/cli/installation.md
+  s_ee1e4e024d9337::t_deb505d2343d8e 1-41
+docs/getting-started/authentication.md
+  s_ee1e4e024d9337::t_bf12b36cd6dcb2 1-35
+docs/getting-started/first-report.md
+  s_ee1e4e024d9337::t_85cd9098689549 1-83
+docs/getting-started/index.md
+  s_ee1e4e024d9337::t_fe29e6c0876c20 24-31
+docs/getting-started/quickstart.md
+  s_ee1e4e024d9337::t_cc55d8a2326916 1-36
+docs/guides/index.md
+  s_ee1e4e024d9337::t_0fa57e38acc3a1 23-30
+docs/guides/issues.md
+  s_ee1e4e024d9337::t_9352e9b2576077 1-40
+docs/guides/test-executions.md
+  s_ee1e4e024d9337::t_0aecbf10af11d5 1-32
+docs/guides/test-results.md
+  s_ee1e4e024d9337::t_749408be3a3c0c 1-35
+docs/integrations/cypress.md
+  s_ee1e4e024d9337::t_86715bb1e915a1 1-89
+docs/integrations/github-actions.md
+  s_ee1e4e024d9337::t_14315e7f3945bb 1-108
+docs/integrations/index.md
+  s_ee1e4e024d9337::t_6c025ed00a8349 15-16,21-29
+docs/integrations/jest.md
+  s_ee1e4e024d9337::t_03b937f2dd0198 1-70
+docs/integrations/playwright.md
+  s_ee1e4e024d9337::t_3537d318aba6a6 1-50
+docs/intro.md
+  s_ee1e4e024d9337::t_484ff8ce912c01 2-3,8,10,12,14-17,19,21,23-27
+docs/mcp/getting-started.md
+  s_ee1e4e024d9337::t_efd63021b6d7f2 1-81
+docs/mcp/index.md
+  s_ee1e4e024d9337::t_6da1153ed52998 23-29
+docs/mcp/tools.md
+  s_ee1e4e024d9337::t_9a5d6b73978f52 1-108
+docs/troubleshooting.md
+  s_ee1e4e024d9337::t_d0eb35298cf56b 1-87
+public-content.json
+  s_ee1e4e024d9337::t_929db2907cce39 81-344
+scripts/checks.mjs
+  s_c71d351d8bbbd5::t_855ebb5e91233f 71-78
+scripts/tests/content-examples.test.mjs
+  s_ee1e4e024d9337::t_4b5e4ff039a834 1-54
+scripts/verify-cli-examples.mjs
+  s_ee1e4e024d9337::t_c9f0b92b446fa9 1-70
+sidebars.ts
+  s_ee1e4e024d9337::t_f192e67f3eebca 10
+src/pages/index.tsx
+  s_ee1e4e024d9337::t_6538faa6586aee 23
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "b3669321f3f261de3fb90b6896cda9460ded020c",
+  "prompts": {},
+  "sessions": {
+    "s_c71d351d8bbbd5": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a15872-6e51-7230-b148-99d4f6539126",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "Ihar Mikailau <ihar.mikailau@ventionteams.com>"
+    },
+    "s_ee1e4e024d9337": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a15846-d390-7452-a56b-4efa1d5fe159",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "Ihar Mikailau <ihar.mikailau@ventionteams.com>"
+    }
+  }
+}
