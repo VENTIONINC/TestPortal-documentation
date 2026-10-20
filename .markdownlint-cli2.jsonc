@@ -1,0 +1,22 @@
+{
+  "globs": [
+    "**/*.md",
+    "**/*.mdx"
+  ],
+  "ignores": [
+    "node_modules/**",
+    "build/**",
+    ".docusaurus/**"
+  ],
+  "config": {
+    "default": true,
+    "MD013": false,
+    "MD033": false,
+    "MD024": {
+      "siblings_only": true
+    },
+    "MD025": {
+      "front_matter_title": ""
+    }
+  }
+}

@@ -1,0 +1,27 @@
+:root {
+  --ifm-color-primary: #235e54;
+  --ifm-color-primary-dark: #20554c;
+  --ifm-color-primary-darker: #1e5047;
+  --ifm-color-primary-darkest: #19423b;
+  --ifm-color-primary-light: #27675c;
+  --ifm-color-primary-lighter: #286c61;
+  --ifm-color-primary-lightest: #2e7a6d;
+  --ifm-code-font-size: 95%;
+}
+[data-theme='dark'] {
+  --ifm-color-primary: #80d9c2;
+  --ifm-color-primary-dark: #64d1b5;
+  --ifm-color-primary-darker: #56cdaf;
+  --ifm-color-primary-darkest: #35bb99;
+  --ifm-color-primary-light: #9ce1cf;
+  --ifm-color-primary-lighter: #aae5d5;
+  --ifm-color-primary-lightest: #d4f2e9;
+}
+.portal-hero { padding: 5rem 0; background: var(--ifm-background-surface-color); }
+.portal-hero h1 { max-width: 850px; font-size: clamp(2.3rem, 5vw, 4rem); line-height: 1.12; }
+.portal-eyebrow { color: var(--ifm-color-primary); font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+.portal-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
+.portal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr)); gap: 1.25rem; }
+.portal-grid .card { border: 1px solid var(--ifm-color-emphasis-200); box-shadow: none; }
+.portal-grid p { margin-bottom: 0; }
+@media (max-width: 600px) { .portal-hero { padding: 3rem 0; } }
