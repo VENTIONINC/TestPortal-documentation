@@ -1,0 +1,45 @@
+CONTENT-VERIFICATION.md
+  s_a9a0ce33eed11a::t_554d525eac048d 92
+MIGRATION.md
+  s_a9a0ce33eed11a::t_8cf2ff663c0a0e 87,89,97
+README.md
+  s_a9a0ce33eed11a::t_c8c77a87d227cd 3,32,51-52,93,95,97,99-119
+package.json
+  s_a9a0ce33eed11a::t_121b2973d74e82 14-16,18
+.github/workflows/deploy.yml
+  s_a9a0ce33eed11a::t_0a8347a47d7955 1-78
+FINAL-ACCEPTANCE.md
+  s_a9a0ce33eed11a::t_05ea4c798f0c36 1-99
+docusaurus.config.ts
+  s_a9a0ce33eed11a::t_d66502fe2ccbf3 15
+scripts/check-llms-stability.mjs
+  s_a9a0ce33eed11a::t_40757daa0d8304 1-17
+scripts/llms-plugin.mjs
+  s_a9a0ce33eed11a::t_ece3a967655931 1-24
+scripts/llms.mjs
+  s_a9a0ce33eed11a::t_3197e7fb1d58c7 1-112
+scripts/smoke-pages.mjs
+  s_a9a0ce33eed11a::t_2f87716b45e9f7 1-79
+scripts/tests/llms.test.mjs
+  s_a9a0ce33eed11a::t_1e7d7351786a4e 1-42
+scripts/tests/pipeline.test.mjs
+  s_a9a0ce33eed11a::t_056eec5950cf82 63-95
+scripts/validate-llms.mjs
+  s_a9a0ce33eed11a::t_b57cd7d58f8040 1-41
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "7b92cf1110c7a01790009ae82f05265aaa219fb4",
+  "prompts": {},
+  "sessions": {
+    "s_a9a0ce33eed11a": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a15846-ddb7-7493-acfc-a39f2cfcc7ac",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "Ihar Mikailau <ihar.mikailau@ventionteams.com>"
+    }
+  }
+}

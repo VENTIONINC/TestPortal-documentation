@@ -1,0 +1,19 @@
+FINAL-ACCEPTANCE.md
+  s_a9a0ce33eed11a::t_3797998a63c954 11-12
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "07f1fa992f3ee8a24c351de160afccb2fd60660d",
+  "prompts": {},
+  "sessions": {
+    "s_a9a0ce33eed11a": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a15846-ddb7-7493-acfc-a39f2cfcc7ac",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "Ihar Mikailau <ihar.mikailau@ventionteams.com>"
+    }
+  }
+}
