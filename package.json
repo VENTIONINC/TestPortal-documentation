@@ -1,0 +1,67 @@
+{
+  "name": "testportal-documentation",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "docusaurus start",
+    "build": "docusaurus build",
+    "serve": "docusaurus serve",
+    "clear": "docusaurus clear",
+    "typecheck": "tsc --noEmit",
+    "lint:md": "markdownlint-cli2",
+    "check:docs": "node scripts/validate-docs.mjs",
+    "check:artifacts": "node scripts/validate-artifacts.mjs",
+    "check:llms": "node scripts/validate-llms.mjs",
+    "check:llms-stability": "node scripts/check-llms-stability.mjs",
+    "check:live": "node scripts/smoke-pages.mjs",
+    "test:checks": "node --test scripts/tests/*.test.mjs",
+    "validate": "npm run lint:md && npm run check:docs && npm run typecheck && npm run test:checks && npm run build && npm run check:artifacts && npm run check:llms && npm run check:llms-stability"
+  },
+  "dependencies": {
+    "@docusaurus/core": "3.10.2",
+    "@docusaurus/preset-classic": "3.10.2",
+    "@easyops-cn/docusaurus-search-local": "0.55.3",
+    "@mdx-js/react": "^3.0.0",
+    "prism-react-renderer": "^2.3.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@docusaurus/module-type-aliases": "3.10.2",
+    "@docusaurus/tsconfig": "3.10.2",
+    "@docusaurus/types": "3.10.2",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "cheerio": "1.2.0",
+    "gray-matter": "4.0.3",
+    "markdownlint-cli2": "0.23.3",
+    "remark-mdx": "3.1.1",
+    "remark-parse": "11.0.0",
+    "shell-quote": "1.12.0",
+    "typescript": "~6.0.2",
+    "unified": "11.0.5",
+    "yaml": "2.9.1"
+  },
+  "browserslist": {
+    "production": [
+      ">0.5%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 3 chrome version",
+      "last 3 firefox version",
+      "last 5 safari version"
+    ]
+  },
+  "engines": {
+    "node": ">=22.0 <23 || >=24.0 <25"
+  },
+  "license": "Apache-2.0",
+  "overrides": {
+    "@docusaurus/core": {
+      "tinypool": "2.1.2"
+    },
+    "serialize-javascript": "7.1.2"
+  }
+}
