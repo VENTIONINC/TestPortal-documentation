@@ -9,6 +9,19 @@ sidebar_position: 2
 
 Start by separating source report generation, local conversion, HTTP upload acceptance and UI visibility. Preserve the source/converted files and a sanitized HTTP status/response. Do not collect secrets, full authorization headers or unreviewed application logs when requesting help.
 
+## Before requesting help
+
+Share the evidence relevant to the failing stage, when available:
+
+- The stage that failed: source report generation, local conversion, HTTP upload, or UI inspection.
+- The test framework and `test-portal-cli` versions.
+- The report timestamp.
+- The HTTP status and a sanitized response, if an HTTP request was made.
+- The execution ID, if one was returned.
+- Expected and observed result counts, noting whether each count comes from the source report, converted report, or UI.
+
+Before sharing evidence, remove API keys, authorization headers, and sensitive report data. Do not attach full reports or unreviewed logs.
+
 ## Authentication and invalid API keys
 
 **Symptom:** HTTP 401 or an authentication error during upload.
