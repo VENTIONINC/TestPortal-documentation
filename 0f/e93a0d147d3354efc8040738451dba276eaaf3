@@ -1,0 +1,21 @@
+sidebars.ts
+  s_f6b655d72abe8e::t_77966dbf6250d4 3-11,15-43
+src/css/custom.css
+  s_f6b655d72abe8e::t_b0aa8451dac7b6 27-31
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "0fe93a0d147d3354efc8040738451dba276eaaf3",
+  "prompts": {},
+  "sessions": {
+    "s_f6b655d72abe8e": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a15e69-a423-7153-80d9-3164b62da61f",
+        "model": "unknown"
+      },
+      "human_author": "Aleksandr Degterov <a.degterov@ventionteams.com>"
+    }
+  }
+}
