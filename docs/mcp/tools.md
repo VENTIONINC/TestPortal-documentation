@@ -106,3 +106,5 @@ Results use MCP `content` text blocks containing serialized JSON. Mutation respo
 Handler failures set `isError: true` with text such as `Error fetching results: ...`; the suffix depends on the actual failure. Schema/protocol errors can be returned before the handler. Check both protocol errors and tool `isError` before using the result. A bulk review's overall response is not proof every item succeeded: inspect its item/count outcomes.
 
 Mock tools and unregistered exports are excluded. If a name is absent from live discovery, check the deployed version with the maintainer instead of guessing a replacement endpoint. Use [UI guides](../guides/issues.md) to inspect resulting issue associations.
+
+For the nine project-scoped Test Scenario tools, see the dedicated [Test Scenario MCP reference](test-scenarios.md). Its source baseline does not guarantee that every instance has deployed those tools; check live discovery first.
