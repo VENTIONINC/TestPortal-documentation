@@ -1,0 +1,29 @@
+docs/guides/scenario-automation-evidence.md
+  s_ec36135ee07d88::t_18104050a57ca8 23
+public-content.json
+  s_f60816a11386e9::t_fa4e0d46115ba0 282-283,286-287,295-296,298-316,387-391,428-436
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "927f0028a7d54a42a9c953856d227501502f620f",
+  "prompts": {},
+  "sessions": {
+    "s_ec36135ee07d88": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a18335-0f1b-7932-8ee8-dcf54998ac00",
+        "model": "gpt-6-luna"
+      },
+      "human_author": "Ihar Mikailau <ihar.mikailau@ventionteams.com>"
+    },
+    "s_f60816a11386e9": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1833e-2c4a-70a2-a45c-2a8bd54aec3c",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "Ihar Mikailau <ihar.mikailau@ventionteams.com>"
+    }
+  }
+}
