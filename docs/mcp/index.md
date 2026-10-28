@@ -17,7 +17,7 @@ An upload API key is intended for report submission and does not replace an MCP 
 
 ## Available operations
 
-Registered tools include result and execution lookup, issue operations, and failure review. Some tools modify data. Review the tools discovered by your client and their input requirements before invoking them.
+Registered tools can include result and execution lookup, issue operations, failure review, and Test Scenario operations. Some tools modify data. Review the tools discovered by your client and their input requirements before invoking them.
 
 Tool exports and documentation lists can differ from the tools actually registered by the server. Use the registered tools of your instance when determining availability.
 
@@ -25,5 +25,6 @@ Tool exports and documentation lists can differ from the tools actually register
 
 - [Connect a client](getting-started.md)
 - [Tool reference](tools.md)
+- [Test Scenario tools](test-scenarios.md)
 
 See [troubleshooting](../troubleshooting.md) for symptoms and resolutions.

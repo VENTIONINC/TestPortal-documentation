@@ -36,3 +36,5 @@ The category choices correspond to `bug`, `infra` (Environment), `performance`, 
 Reopen the result context and inspect its confirmed issue, then find the issue in **Issues** with the intended project and statistics period. Read counts within that period; they are not necessarily lifetime totals.
 
 Editing issue details and confirming/rejecting associations change shared investigation data. Check the target result/issue before applying them. For an assistant-driven workflow, [MCP tools](../mcp/tools.md) distinguish reads, review operations and writes.
+
+Test Scenario **Related issue URL** is a separate author-entered link. It does not create the observed-issue evidence described in [scenario automation evidence](scenario-automation-evidence.md).

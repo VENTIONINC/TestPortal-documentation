@@ -21,6 +21,11 @@ const sidebars: SidebarsConfig = {
       'guides/test-executions',
       'guides/test-results',
       'guides/issues',
+      'guides/test-scenarios',
+      'guides/scenario-organization',
+      'guides/scenario-automation-evidence',
+      'guides/manual-test-runs',
+      'guides/manual-run-history',
     ]),
     category('Integrations', 'integrations/index', [
       'integrations/playwright',
@@ -40,6 +45,7 @@ const sidebars: SidebarsConfig = {
     category('MCP', 'mcp/index', [
       'mcp/getting-started',
       'mcp/tools',
+      'mcp/test-scenarios',
     ]),
     'troubleshooting',
   ],
