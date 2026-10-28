@@ -20,7 +20,7 @@ The link is project-scoped. The available picker is paginated and can be searche
 
 ## Understand the evidence
 
-When you inspect scenario evidence, **Results** come from executions of linked Specs. **Observed Issues** are derived through those Results and their recorded issue associations. Evidence can be paginated separately for Results and Issues. The evidence view reports linked Specs and result/issue totals, so an empty page does not necessarily mean there are no records on another page. The MCP `get-test-scenario` tool returns these evidence collections with the scenario detail.
+When you inspect scenario evidence, **Results** come from executions of linked Specs. **Observed Issues** are derived through those Results and their recorded issue associations. Evidence can be paginated separately for Results and Issues. The evidence view reports linked Specs and result/issue totals, so an empty page does not necessarily mean there are no records on another page. The MCP `testportal-get-test-scenario` tool returns these evidence collections with the scenario detail.
 
 If a scenario has no linked Specs, there is no linked execution evidence to show. A linked Spec may also have no Results, and Results may have no observed Issues. These are different states; an empty evidence collection does not by itself indicate an integration failure.
 

@@ -279,11 +279,12 @@
       "slug": "/mcp/getting-started",
       "review": "approved",
       "sources": [
-        "https://github.com/VENTIONINC/TestPortal-backend/blob/e113971625d3666fc18fac135872a2ecc6c84ca4/src/mcp/server.ts",
-        "https://github.com/VENTIONINC/TestPortal-backend/blob/e113971625d3666fc18fac135872a2ecc6c84ca4/src/mcp/middleware/auth.ts",
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/31d9dd97507dce57ac62cb95ea254b9c809f9ff3/src/mcp/server.ts",
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/31d9dd97507dce57ac62cb95ea254b9c809f9ff3/src/mcp/middleware/auth.ts",
         "https://github.com/VENTIONINC/TestPortal-client/blob/22802e11abb029a38dc358055532ca82cf5de2e1/src/pages/UserSettings/MCPSettings.tsx",
         "https://github.com/VENTIONINC/TestPortal-client/blob/22802e11abb029a38dc358055532ca82cf5de2e1/src/components/mcp-token/MCPTokenSection.tsx",
-        "https://github.com/VENTIONINC/TestPortal-client/blob/22802e11abb029a38dc358055532ca82cf5de2e1/src/components/mcp-token/components/TokenHeader.tsx"
+        "https://github.com/VENTIONINC/TestPortal-client/blob/22802e11abb029a38dc358055532ca82cf5de2e1/src/components/mcp-token/components/TokenHeader.tsx",
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/31d9dd97507dce57ac62cb95ea254b9c809f9ff3/src/mcp/helpers/mcpHelpers.ts"
       ]
     },
     {
@@ -291,26 +292,28 @@
       "slug": "/mcp/tools",
       "review": "approved",
       "sources": [
-        "https://github.com/VENTIONINC/TestPortal-backend/blob/e113971625d3666fc18fac135872a2ecc6c84ca4/src/mcp/server.ts",
-        "https://github.com/VENTIONINC/TestPortal-backend/blob/e113971625d3666fc18fac135872a2ecc6c84ca4/src/mcp/middleware/auth.ts",
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/31d9dd97507dce57ac62cb95ea254b9c809f9ff3/src/mcp/server.ts",
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/31d9dd97507dce57ac62cb95ea254b9c809f9ff3/src/mcp/middleware/auth.ts",
         "https://github.com/VENTIONINC/TestPortal-client/blob/22802e11abb029a38dc358055532ca82cf5de2e1/src/pages/UserSettings/MCPSettings.tsx",
-        "https://github.com/VENTIONINC/TestPortal-backend/blob/e113971625d3666fc18fac135872a2ecc6c84ca4/src/mcp/tools/issues.ts",
-        "https://github.com/VENTIONINC/TestPortal-backend/blob/e113971625d3666fc18fac135872a2ecc6c84ca4/src/mcp/tools/results.ts",
-        "https://github.com/VENTIONINC/TestPortal-backend/blob/e113971625d3666fc18fac135872a2ecc6c84ca4/src/mcp/tools/result-errors.ts",
-        "https://github.com/VENTIONINC/TestPortal-backend/blob/e113971625d3666fc18fac135872a2ecc6c84ca4/src/mcp/tools/assumptions.ts",
-        "https://github.com/VENTIONINC/TestPortal-backend/blob/e113971625d3666fc18fac135872a2ecc6c84ca4/src/mcp/tools/executions.ts",
-        "https://github.com/VENTIONINC/TestPortal-backend/blob/e113971625d3666fc18fac135872a2ecc6c84ca4/src/mcp/tools/specs.ts",
-        "https://github.com/VENTIONINC/TestPortal-backend/blob/e113971625d3666fc18fac135872a2ecc6c84ca4/src/mcp/tools/status-check.ts",
-        "https://github.com/VENTIONINC/TestPortal-backend/blob/e113971625d3666fc18fac135872a2ecc6c84ca4/src/mcp/tools/current-time.ts",
-        "https://github.com/VENTIONINC/TestPortal-backend/blob/e113971625d3666fc18fac135872a2ecc6c84ca4/src/mcp/schemas/issueSchemas.ts",
-        "https://github.com/VENTIONINC/TestPortal-backend/blob/e113971625d3666fc18fac135872a2ecc6c84ca4/src/mcp/schemas/resultSchemas.ts",
-        "https://github.com/VENTIONINC/TestPortal-backend/blob/e113971625d3666fc18fac135872a2ecc6c84ca4/src/mcp/schemas/resultErrorSchemas.ts",
-        "https://github.com/VENTIONINC/TestPortal-backend/blob/e113971625d3666fc18fac135872a2ecc6c84ca4/src/mcp/schemas/assumptionSchemas.ts",
-        "https://github.com/VENTIONINC/TestPortal-backend/blob/e113971625d3666fc18fac135872a2ecc6c84ca4/src/mcp/schemas/executionSchemas.ts",
-        "https://github.com/VENTIONINC/TestPortal-backend/blob/e113971625d3666fc18fac135872a2ecc6c84ca4/src/mcp/schemas/specSchemas.ts",
-        "https://github.com/VENTIONINC/TestPortal-backend/blob/e113971625d3666fc18fac135872a2ecc6c84ca4/src/mcp/helpers/mcpHelpers.ts",
-        "https://github.com/VENTIONINC/TestPortal-backend/blob/e113971625d3666fc18fac135872a2ecc6c84ca4/src/services/assumptionService.ts",
-        "https://github.com/VENTIONINC/TestPortal-backend/blob/e113971625d3666fc18fac135872a2ecc6c84ca4/docs/MCP_TOOLS.md"
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/31d9dd97507dce57ac62cb95ea254b9c809f9ff3/src/mcp/tools/issues.ts",
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/31d9dd97507dce57ac62cb95ea254b9c809f9ff3/src/mcp/tools/results.ts",
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/31d9dd97507dce57ac62cb95ea254b9c809f9ff3/src/mcp/tools/result-errors.ts",
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/31d9dd97507dce57ac62cb95ea254b9c809f9ff3/src/mcp/tools/assumptions.ts",
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/31d9dd97507dce57ac62cb95ea254b9c809f9ff3/src/mcp/tools/executions.ts",
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/31d9dd97507dce57ac62cb95ea254b9c809f9ff3/src/mcp/tools/specs.ts",
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/31d9dd97507dce57ac62cb95ea254b9c809f9ff3/src/mcp/tools/status-check.ts",
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/31d9dd97507dce57ac62cb95ea254b9c809f9ff3/src/mcp/tools/current-time.ts",
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/31d9dd97507dce57ac62cb95ea254b9c809f9ff3/src/mcp/schemas/issueSchemas.ts",
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/31d9dd97507dce57ac62cb95ea254b9c809f9ff3/src/mcp/schemas/resultSchemas.ts",
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/31d9dd97507dce57ac62cb95ea254b9c809f9ff3/src/mcp/schemas/resultErrorSchemas.ts",
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/31d9dd97507dce57ac62cb95ea254b9c809f9ff3/src/mcp/schemas/assumptionSchemas.ts",
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/31d9dd97507dce57ac62cb95ea254b9c809f9ff3/src/mcp/schemas/executionSchemas.ts",
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/31d9dd97507dce57ac62cb95ea254b9c809f9ff3/src/mcp/schemas/specSchemas.ts",
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/31d9dd97507dce57ac62cb95ea254b9c809f9ff3/src/mcp/helpers/mcpHelpers.ts",
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/31d9dd97507dce57ac62cb95ea254b9c809f9ff3/src/services/assumptionService.ts",
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/31d9dd97507dce57ac62cb95ea254b9c809f9ff3/docs/MCP_TOOLS.md",
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/31d9dd97507dce57ac62cb95ea254b9c809f9ff3/src/mcp/tools/projects.ts",
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/31d9dd97507dce57ac62cb95ea254b9c809f9ff3/src/handlers/mcpProjectHandler.ts"
       ]
     },
     {
@@ -381,10 +384,11 @@
       "sources": [
         "https://github.com/VENTIONINC/TestPortal-client/blob/7a665042fce92448878201e2091271e67dcd6f65/src/components/results/assign-issue-modal/ResultRelatedScenarios.tsx",
         "https://github.com/VENTIONINC/TestPortal-client/blob/7a665042fce92448878201e2091271e67dcd6f65/src/components/results/assign-issue-modal/useResultScenarioManagement.ts",
-        "https://github.com/VENTIONINC/TestPortal-backend/blob/d1ae062f3ce1b65afea4a3b4e724ebfdfe4843c1/src/services/testScenarioIntegrationService.ts",
-        "https://github.com/VENTIONINC/TestPortal-backend/blob/d1ae062f3ce1b65afea4a3b4e724ebfdfe4843c1/src/models/testScenarioSpecLinkModel.ts",
-        "https://github.com/VENTIONINC/TestPortal-backend/blob/d1ae062f3ce1b65afea4a3b4e724ebfdfe4843c1/src/services/resultService.ts",
-        "https://github.com/VENTIONINC/TestPortal-backend/blob/d1ae062f3ce1b65afea4a3b4e724ebfdfe4843c1/src/services/issueService.ts"
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/31d9dd97507dce57ac62cb95ea254b9c809f9ff3/src/services/testScenarioIntegrationService.ts",
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/31d9dd97507dce57ac62cb95ea254b9c809f9ff3/src/models/testScenarioSpecLinkModel.ts",
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/31d9dd97507dce57ac62cb95ea254b9c809f9ff3/src/services/resultService.ts",
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/31d9dd97507dce57ac62cb95ea254b9c809f9ff3/src/services/issueService.ts",
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/31d9dd97507dce57ac62cb95ea254b9c809f9ff3/src/mcp/helpers/mcpHelpers.ts"
       ]
     },
     {
@@ -421,13 +425,15 @@
       "slug": "/mcp/test-scenarios",
       "review": "approved",
       "sources": [
-        "https://github.com/VENTIONINC/TestPortal-backend/blob/d1ae062f3ce1b65afea4a3b4e724ebfdfe4843c1/src/mcp/tools/test-scenarios.ts",
-        "https://github.com/VENTIONINC/TestPortal-backend/blob/d1ae062f3ce1b65afea4a3b4e724ebfdfe4843c1/src/mcp/schemas/testScenarioSchemas.ts",
-        "https://github.com/VENTIONINC/TestPortal-backend/blob/d1ae062f3ce1b65afea4a3b4e724ebfdfe4843c1/src/mcp/server.ts",
-        "https://github.com/VENTIONINC/TestPortal-backend/blob/d1ae062f3ce1b65afea4a3b4e724ebfdfe4843c1/src/handlers/mcpTestScenarioHandler.ts",
-        "https://github.com/VENTIONINC/TestPortal-backend/blob/d1ae062f3ce1b65afea4a3b4e724ebfdfe4843c1/src/services/testScenarioIntegrationService.ts",
-        "https://github.com/VENTIONINC/TestPortal-backend/blob/d1ae062f3ce1b65afea4a3b4e724ebfdfe4843c1/src/types/testScenarios.ts",
-        "https://github.com/VENTIONINC/TestPortal-backend/blob/d1ae062f3ce1b65afea4a3b4e724ebfdfe4843c1/__tests__/mcp/testScenarioMcpWorkflow.test.ts"
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/31d9dd97507dce57ac62cb95ea254b9c809f9ff3/src/mcp/tools/test-scenarios.ts",
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/31d9dd97507dce57ac62cb95ea254b9c809f9ff3/src/mcp/schemas/testScenarioSchemas.ts",
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/31d9dd97507dce57ac62cb95ea254b9c809f9ff3/src/mcp/server.ts",
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/31d9dd97507dce57ac62cb95ea254b9c809f9ff3/src/handlers/mcpTestScenarioHandler.ts",
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/31d9dd97507dce57ac62cb95ea254b9c809f9ff3/src/services/testScenarioIntegrationService.ts",
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/31d9dd97507dce57ac62cb95ea254b9c809f9ff3/src/types/testScenarios.ts",
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/31d9dd97507dce57ac62cb95ea254b9c809f9ff3/__tests__/mcp/testScenarioMcpWorkflow.test.ts",
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/31d9dd97507dce57ac62cb95ea254b9c809f9ff3/src/mcp/helpers/mcpHelpers.ts",
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/31d9dd97507dce57ac62cb95ea254b9c809f9ff3/__tests__/mcp/testScenarioMcpTransport.test.ts"
       ]
     }
   ],

@@ -7,7 +7,9 @@ sidebar_position: 4
 
 # Test Scenario MCP tools
 
-This reference describes the nine tools registered at backend source baseline `d1ae062f3ce1b65afea4a3b4e724ebfdfe4843c1`, including four tools for scenario-step operations. A source baseline does not prove which tools are deployed on your instance. Connect to the instance and inspect its live `tools/list` response before calling a tool. For transport and authentication setup, see [MCP getting started](getting-started.md).
+This reference describes the nine tools registered at backend source baseline `31d9dd97507dce57ac62cb95ea254b9c809f9ff3`, including four tools for scenario-step operations. A source baseline does not prove which tools are deployed on your instance. Connect to the instance and inspect its live `tools/list` response before calling a tool. For transport and authentication setup, see [MCP getting started](getting-started.md).
+
+All scenario tool names begin with `testportal-`. Previous unprefixed names are unsupported and have no aliases. Refresh your client's tool catalog or update hard-coded names using the [client migration guidance](tools.md#migrate-existing-clients). Inputs and response contracts remain unchanged.
 
 All IDs are UUID strings. Use the project UUID and scenario UUID for the same project. Each example below shows the `name` and `arguments` passed to MCP `tools/call`; the MCP client handles transport/session fields. UUIDs and content are synthetic.
 
@@ -15,17 +17,17 @@ All IDs are UUID strings. Use the project UUID and scenario UUID for the same pr
 
 | Tool | Required inputs | Optional inputs, defaults, and effects |
 | --- | --- | --- |
-| `create-test-scenario` | `projectId`, `title` | `folderId` UUID or null; `scenarioKey` (trimmed, 1–100 characters, no line breaks; duplicates allowed); nonblank `details`, `preconditions`, `testData`; `priority`: `low`, `medium`, `high`, or null; absolute HTTP(S) `relatedIssueUrl` or null; `steps` defaults to `[]`, each with nonblank `action` and optional nonblank `expectedResult`. The authenticated user becomes `createdById`. |
-| `list-test-scenarios` | `projectId` | `page` defaults to 1; `limit` defaults to 30, maximum 100. `search` matches title/key. `createdById` filters by any creator UUID, including another user. `scenarioKey`, `title`, `details`, `folder`, and `createdBy` are case-insensitive literal substring filters; blank filters are ignored. `sort` is `recently_created` (default), `recently_updated`, or `title_asc`. Alternatively use `sortField` (`scenarioKey`, `title`, `details`, `folder`, `createdBy`, `createdAt`, `updatedAt`) with `sortDirection` `asc` or `desc` (default `desc`). `sortDirection` requires `sortField`; `sort` cannot be combined with `sortField`. |
-| `get-test-scenario` | `scenarioId`, `projectId` | `resultPage`/`issuePage` default to 1; `resultLimit`/`issueLimit` default to 30, maximum 100. Result and issue evidence are paginated independently. |
-| `update-test-scenario` | `scenarioId`, `projectId`, and at least one editable field | Any of `title`, `scenarioKey`, `details`, `preconditions`, `testData`, `priority`, `relatedIssueUrl`. Omitted fields stay unchanged; null clears nullable fields. Text must be nonblank after trimming when supplied. Markdown, steps, folder assignment, and immutable fields are not accepted. |
-| `delete-test-scenario` | `scenarioId`, `projectId` | Deletes the scenario and its links; linked Specs and existing execution evidence are preserved. |
-| `append-test-scenario-step` | `scenarioId`, `projectId`, `action` | `expectedResult` is optional and nonblank if supplied. Appends one step with a generated stable UUID and returns full scenario detail. |
-| `update-test-scenario-step` | `scenarioId`, `projectId`, `stepId`, and at least one of `action` or `expectedResult` | Supplied text must be nonblank after trimming. Omitted fields stay unchanged; `expectedResult: null` clears it. Returns full scenario detail. |
-| `delete-test-scenario-step` | `scenarioId`, `projectId`, `stepId` | Deletes that step and compacts the remaining positions. Returns full scenario detail. |
-| `reorder-test-scenario-steps` | `scenarioId`, `projectId`, `stepIds` | `stepIds` must contain every current step UUID exactly once, in the requested order. An empty array is valid only for a scenario with no steps. Returns full scenario detail. |
+| `testportal-create-test-scenario` | `projectId`, `title` | `folderId` UUID or null; `scenarioKey` (trimmed, 1–100 characters, no line breaks; duplicates allowed); nonblank `details`, `preconditions`, `testData`; `priority`: `low`, `medium`, `high`, or null; absolute HTTP(S) `relatedIssueUrl` or null; `steps` defaults to `[]`, each with nonblank `action` and optional nonblank `expectedResult`. The authenticated user becomes `createdById`. |
+| `testportal-list-test-scenarios` | `projectId` | `page` defaults to 1; `limit` defaults to 30, maximum 100. `search` matches title/key. `createdById` filters by any creator UUID, including another user. `scenarioKey`, `title`, `details`, `folder`, and `createdBy` are case-insensitive literal substring filters; blank filters are ignored. `sort` is `recently_created` (default), `recently_updated`, or `title_asc`. Alternatively use `sortField` (`scenarioKey`, `title`, `details`, `folder`, `createdBy`, `createdAt`, `updatedAt`) with `sortDirection` `asc` or `desc` (default `desc`). `sortDirection` requires `sortField`; `sort` cannot be combined with `sortField`. |
+| `testportal-get-test-scenario` | `scenarioId`, `projectId` | `resultPage`/`issuePage` default to 1; `resultLimit`/`issueLimit` default to 30, maximum 100. Result and issue evidence are paginated independently. |
+| `testportal-update-test-scenario` | `scenarioId`, `projectId`, and at least one editable field | Any of `title`, `scenarioKey`, `details`, `preconditions`, `testData`, `priority`, `relatedIssueUrl`. Omitted fields stay unchanged; null clears nullable fields. Text must be nonblank after trimming when supplied. Markdown, steps, folder assignment, and immutable fields are not accepted. |
+| `testportal-delete-test-scenario` | `scenarioId`, `projectId` | Deletes the scenario and its links; linked Specs and existing execution evidence are preserved. |
+| `testportal-append-test-scenario-step` | `scenarioId`, `projectId`, `action` | `expectedResult` is optional and nonblank if supplied. Appends one step with a generated stable UUID and returns full scenario detail. |
+| `testportal-update-test-scenario-step` | `scenarioId`, `projectId`, `stepId`, and at least one of `action` or `expectedResult` | Supplied text must be nonblank after trimming. Omitted fields stay unchanged; `expectedResult: null` clears it. Returns full scenario detail. |
+| `testportal-delete-test-scenario-step` | `scenarioId`, `projectId`, `stepId` | Deletes that step and compacts the remaining positions. Returns full scenario detail. |
+| `testportal-reorder-test-scenario-steps` | `scenarioId`, `projectId`, `stepIds` | `stepIds` must contain every current step UUID exactly once, in the requested order. An empty array is valid only for a scenario with no steps. Returns full scenario detail. |
 
-Scenario keys are labels, not identifiers: they may be duplicated. Use UUIDs for scenario and step operations. The list response contains lightweight summaries; use `get-test-scenario` for structured detail, generated Markdown, steps, and evidence. The list tool accepts a `folder` text filter that matches the displayed folder path or `Unfiled`; it does not accept a folder UUID or suite filter. Scenario creation can assign an existing folder UUID with `folderId`, but MCP does not provide folder management or moves for existing scenarios. MCP also does not manage suites, Spec links, or manual runs.
+Scenario keys are labels, not identifiers: they may be duplicated. Use UUIDs for scenario and step operations. The list response contains lightweight summaries; use `testportal-get-test-scenario` for structured detail, generated Markdown, steps, and evidence. The list tool accepts a `folder` text filter that matches the displayed folder path or `Unfiled`; it does not accept a folder UUID or suite filter. Scenario creation can assign an existing folder UUID with `folderId`, but MCP does not provide folder management or moves for existing scenarios. MCP also does not manage suites, Spec links, or manual runs.
 
 ## `tools/call` examples
 
@@ -33,7 +35,7 @@ Scenario keys are labels, not identifiers: they may be duplicated. Use UUIDs for
 
 ```json
 {
-  "name": "create-test-scenario",
+  "name": "testportal-create-test-scenario",
   "arguments": {
     "projectId": "11111111-1111-4111-8111-111111111111",
     "title": "Sign-in accepts a valid account",
@@ -51,7 +53,7 @@ Scenario keys are labels, not identifiers: they may be duplicated. Use UUIDs for
 
 ```json
 {
-  "name": "list-test-scenarios",
+  "name": "testportal-list-test-scenarios",
   "arguments": {
     "projectId": "11111111-1111-4111-8111-111111111111",
     "search": "AUTH",
@@ -66,7 +68,7 @@ Scenario keys are labels, not identifiers: they may be duplicated. Use UUIDs for
 
 ```json
 {
-  "name": "get-test-scenario",
+  "name": "testportal-get-test-scenario",
   "arguments": {
     "scenarioId": "22222222-2222-4222-8222-222222222222",
     "projectId": "11111111-1111-4111-8111-111111111111",
@@ -82,7 +84,7 @@ Scenario keys are labels, not identifiers: they may be duplicated. Use UUIDs for
 
 ```json
 {
-  "name": "update-test-scenario",
+  "name": "testportal-update-test-scenario",
   "arguments": {
     "scenarioId": "22222222-2222-4222-8222-222222222222",
     "projectId": "11111111-1111-4111-8111-111111111111",
@@ -96,7 +98,7 @@ Scenario keys are labels, not identifiers: they may be duplicated. Use UUIDs for
 
 ```json
 {
-  "name": "delete-test-scenario",
+  "name": "testportal-delete-test-scenario",
   "arguments": {
     "scenarioId": "22222222-2222-4222-8222-222222222222",
     "projectId": "11111111-1111-4111-8111-111111111111"
@@ -108,7 +110,7 @@ Scenario keys are labels, not identifiers: they may be duplicated. Use UUIDs for
 
 ```json
 {
-  "name": "append-test-scenario-step",
+  "name": "testportal-append-test-scenario-step",
   "arguments": {
     "scenarioId": "22222222-2222-4222-8222-222222222222",
     "projectId": "11111111-1111-4111-8111-111111111111",
@@ -122,7 +124,7 @@ Scenario keys are labels, not identifiers: they may be duplicated. Use UUIDs for
 
 ```json
 {
-  "name": "update-test-scenario-step",
+  "name": "testportal-update-test-scenario-step",
   "arguments": {
     "scenarioId": "22222222-2222-4222-8222-222222222222",
     "projectId": "11111111-1111-4111-8111-111111111111",
@@ -136,7 +138,7 @@ Scenario keys are labels, not identifiers: they may be duplicated. Use UUIDs for
 
 ```json
 {
-  "name": "delete-test-scenario-step",
+  "name": "testportal-delete-test-scenario-step",
   "arguments": {
     "scenarioId": "22222222-2222-4222-8222-222222222222",
     "projectId": "11111111-1111-4111-8111-111111111111",
@@ -149,7 +151,7 @@ Scenario keys are labels, not identifiers: they may be duplicated. Use UUIDs for
 
 ```json
 {
-  "name": "reorder-test-scenario-steps",
+  "name": "testportal-reorder-test-scenario-steps",
   "arguments": {
     "scenarioId": "22222222-2222-4222-8222-222222222222",
     "projectId": "11111111-1111-4111-8111-111111111111",
@@ -165,7 +167,7 @@ Scenario keys are labels, not identifiers: they may be duplicated. Use UUIDs for
 
 Successful tools return MCP text content containing serialized JSON. The following abbreviated response bodies are illustrative; generated IDs, timestamps, hashes, and content vary.
 
-`list-test-scenarios` returns summaries and pagination metadata, without steps or generated Markdown:
+`testportal-list-test-scenarios` returns summaries and pagination metadata, without steps or generated Markdown:
 
 ```json
 {
@@ -177,7 +179,7 @@ Successful tools return MCP text content containing serialized JSON. The followi
 }
 ```
 
-`get-test-scenario` returns a full scenario and two separately paged evidence envelopes:
+`testportal-get-test-scenario` returns a full scenario and two separately paged evidence envelopes:
 
 ```json
 {
@@ -187,7 +189,7 @@ Successful tools return MCP text content containing serialized JSON. The followi
 }
 ```
 
-Create, update, and step mutation tools return the complete updated scenario, including generated Markdown metadata and ordered steps. `delete-test-scenario` instead returns a deletion confirmation:
+Create, update, and step mutation tools return the complete updated scenario, including generated Markdown metadata and ordered steps. `testportal-delete-test-scenario` instead returns a deletion confirmation:
 
 ```json
 {
