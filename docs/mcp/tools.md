@@ -119,3 +119,5 @@ Mock tools and unregistered exports are excluded. If a name is absent from live 
 For the nine project-scoped Test Scenario tools, see the dedicated [Test Scenario MCP reference](test-scenarios.md). Its source baseline does not guarantee that every instance has deployed those tools; check live discovery first.
 
 For the nine manual execution and history tools, see [Manual test runs over MCP](manual-test-runs.md). They record client-observed outcomes and require explicit completion; check live discovery before relying on deployed availability.
+
+The four shared environment-profile tools and a profile-to-run example are documented in [Manual test runs over MCP](manual-test-runs.md#manage-environment-profiles). Check live discovery for their availability.
