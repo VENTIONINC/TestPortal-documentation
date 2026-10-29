@@ -33,5 +33,6 @@ Scenario priority, related issue URL, generated Markdown, and automated evidence
 
 ## See also
 
+- [Manual test runs over MCP](../mcp/manual-test-runs.md)
 - [Run a Test Scenario manually](manual-test-runs.md)
 - [Organize Test Scenarios](scenario-organization.md)

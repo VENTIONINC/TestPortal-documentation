@@ -46,6 +46,7 @@ const sidebars: SidebarsConfig = {
       'mcp/getting-started',
       'mcp/tools',
       'mcp/test-scenarios',
+      'mcp/manual-test-runs',
     ]),
     'troubleshooting',
   ],

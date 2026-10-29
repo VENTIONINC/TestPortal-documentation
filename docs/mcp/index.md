@@ -26,5 +26,6 @@ Tool exports and documentation lists can differ from the tools actually register
 - [Connect a client](getting-started.md)
 - [Tool reference](tools.md)
 - [Test Scenario tools](test-scenarios.md)
+- [Manual test runs](manual-test-runs.md)
 
 See [troubleshooting](../troubleshooting.md) for symptoms and resolutions.
