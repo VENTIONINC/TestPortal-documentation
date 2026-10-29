@@ -1,0 +1,23 @@
+docs/mcp/manual-test-runs.md
+  s_97da24d1931307::t_6bd12ac751c58e 32-61
+docs/mcp/tools.md
+  s_97da24d1931307::t_2135ad6ef48869 122-123
+public-content.json
+  s_97da24d1931307::t_56514d1508a09d 316-323,459-466
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "9bbfcfd297d435df3d45c00355b03a720470478f",
+  "prompts": {},
+  "sessions": {
+    "s_97da24d1931307": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1872c-caaa-7b42-aa47-8f4d189ab8ca",
+        "model": "gpt-6.1-terra"
+      },
+      "human_author": "Ihar Mikailau <ihar.mikailau@ventionteams.com>"
+    }
+  }
+}
