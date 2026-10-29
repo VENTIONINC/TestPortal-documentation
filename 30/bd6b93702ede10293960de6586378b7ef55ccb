@@ -1,0 +1,19 @@
+public-content.json
+  s_fe3cba2f918620::t_218cd19c87ef15 438-453
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "30bd6b93702ede10293960de6586378b7ef55ccb",
+  "prompts": {},
+  "sessions": {
+    "s_fe3cba2f918620": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a186d2-d767-7a23-9c02-b78ddb082e7b",
+        "model": "gpt-6-luna"
+      },
+      "human_author": "Ihar Mikailau <ihar.mikailau@ventionteams.com>"
+    }
+  }
+}
