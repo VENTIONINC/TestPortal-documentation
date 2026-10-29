@@ -27,6 +27,7 @@ Save operations can fail independently. Read the feedback before continuing. Whe
 
 ## Continue to history
 
+- [Record manual runs through MCP](../mcp/manual-test-runs.md)
 - [Review manual run history](manual-run-history.md)
 - [Create and edit Test Scenarios](test-scenarios.md)
 - [Review automated evidence](scenario-automation-evidence.md)
