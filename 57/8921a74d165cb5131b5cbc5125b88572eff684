@@ -1,0 +1,19 @@
+docs/mcp/test-scenarios.md
+  s_a4804319e6be94::t_a8f82763b4cfb6 21,30-64,104-106,294
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "578921a74d165cb5131b5cbc5125b88572eff684",
+  "prompts": {},
+  "sessions": {
+    "s_a4804319e6be94": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a18c59-279b-7f12-9a8b-ed9d602b0780",
+        "model": "gpt-6.1-terra"
+      },
+      "human_author": "Ihar Mikailau <ihar.mikailau@ventionteams.com>"
+    }
+  }
+}
