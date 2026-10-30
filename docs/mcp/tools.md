@@ -7,17 +7,17 @@ sidebar_position: 3
 
 # MCP tool reference
 
-These tools are explicitly selected from the authenticated Test Portal MCP integration and checked against the recorded server registration, schemas and handlers. They cover product workflows, not private prompts or arbitrary backend exports. Confirm the live `tools/list` result after [connecting](getting-started.md); a source snapshot does not establish your instance's deployed version or grant authorization to its data.
+The current authenticated integration exposes two public tools: `testportal-find-action` discovers contracts and `testportal-execute-action` invokes one action. The tables below list canonical action IDs, not public tool names. Confirm the live `tools/list` result after [connecting](getting-started.md); source support does not establish the deployed version.
 
 Use UUIDs from the intended project. Examples below contain synthetic UUID placeholders and must be replaced. Read-only queries are a useful starting point before enabling any operation that writes data.
 
-Every backend MCP tool uses the canonical `testportal-<previous-name>` form. Unprefixed names are unsupported and have no aliases or transition period. Reconnect and discover the current catalog, or update hard-coded calls before invoking tools.
+Call discovery with `{}` for an overview, with `{"query":"manual step outcome","area":"tms","limit":3}` for bounded search, or with `{"actionId":"testportal-get-results"}` for an exact contract. Areas are `core` and `tms`; shared project, status and time actions belong to both. Search returns at most five definitions (default three), with `hasMore` indicating further matches. A query and action ID cannot be combined; limit applies only to queries.
 
 ## Migrate existing clients
 
-After the backend naming update, reconnect your MCP client and refresh its tool catalog. Update saved tool selections and hard-coded `tools/call` names by adding `testportal-` to the complete previous name; for example, `check-status` becomes `testportal-check-status` and `append-test-scenario-step` becomes `testportal-append-test-scenario-step`. Add the prefix only once.
+This is an immediate breaking change: direct calls to former prefixed and unprefixed tools fail without aliases. Call `testportal-execute-action` with `{"actionId":"testportal-check-status","arguments":{}}`, for example, and use discovery to retrieve action contracts. Update saved calls and reconnect after deployment. Restart the server at cutover so existing in-memory sessions cannot retain the old tool surface; clients must reconnect again after rollback.
 
-Arguments, responses, authentication, and project scoping remain unchanged. Prompt identifiers and the MCP endpoint remain unchanged. Calls using old tool names fail as unknown tools before their handlers execute.
+Action arguments, service responses, authentication, project scoping, prompt identifiers and the endpoint remain unchanged. Discovery is marked read-only. The executor is conservatively marked potentially destructive and non-idempotent; individual action effects are metadata, not native per-action MCP annotations. Client approval behavior varies and should be checked with your client.
 
 ## Read tools
 
@@ -46,12 +46,15 @@ Example MCP `tools/call` payload (the client supplies the negotiated transport/s
 
 ```json
 {
-  "name": "testportal-get-results",
+  "name": "testportal-execute-action",
   "arguments": {
-    "projectId": "11111111-1111-4111-8111-111111111111",
-    "status": "failed",
-    "page": 1,
-    "limit": 10
+    "actionId": "testportal-get-results",
+    "arguments": {
+      "projectId": "11111111-1111-4111-8111-111111111111",
+      "status": "failed",
+      "page": 1,
+      "limit": 10
+    }
   }
 }
 ```
@@ -60,12 +63,15 @@ For issues, note the different pagination types:
 
 ```json
 {
-  "name": "testportal-get-issues",
+  "name": "testportal-execute-action",
   "arguments": {
-    "projectId": "11111111-1111-4111-8111-111111111111",
-    "category": "bug",
-    "page": "1",
-    "limit": "10"
+    "actionId": "testportal-get-issues",
+    "arguments": {
+      "projectId": "11111111-1111-4111-8111-111111111111",
+      "category": "bug",
+      "page": "1",
+      "limit": "10"
+    }
   }
 }
 ```
@@ -89,12 +95,15 @@ Illustrative issue-creation input for a deliberate test-project action:
 
 ```json
 {
-  "name": "testportal-create-issue",
+  "name": "testportal-execute-action",
   "arguments": {
-    "projectId": "11111111-1111-4111-8111-111111111111",
-    "name": "Example checkout failure",
-    "category": "bug",
-    "description": "Synthetic example; replace with reviewed failure details."
+    "actionId": "testportal-create-issue",
+    "arguments": {
+      "projectId": "11111111-1111-4111-8111-111111111111",
+      "name": "Example checkout failure",
+      "category": "bug",
+      "description": "Synthetic example; replace with reviewed failure details."
+    }
   }
 }
 ```
@@ -112,7 +121,7 @@ Results use MCP `content` text blocks containing serialized JSON. Mutation respo
 }
 ```
 
-Handler failures set `isError: true` with text such as `Error fetching results: ...`; the suffix depends on the actual failure. Schema/protocol errors can be returned before the handler. Check both protocol errors and tool `isError` before using the result. A bulk review's overall response is not proof every item succeeded: inspect its item/count outcomes.
+Unknown action IDs and invalid action arguments produce `isError: true` with a JSON error kind and, for invalid arguments, field paths and messages. An exact lookup with the wrong area returns `area_mismatch`. Invalid public envelopes produce MCP validation errors. Handler failures retain their existing text, such as `Error fetching results: ...`. Check protocol errors and tool `isError` before using the result. A bulk review's overall response is not proof every item succeeded: inspect its item/count outcomes.
 
 Mock tools and unregistered exports are excluded. If a name is absent from live discovery, check the deployed version with the maintainer instead of guessing a replacement endpoint. Use [UI guides](../guides/issues.md) to inspect resulting issue associations.
 

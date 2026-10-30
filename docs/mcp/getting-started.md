@@ -30,7 +30,7 @@ Use your client's current remote-server configuration UI to enter these values. 
 
 The transport initializes a session, then sends its `mcp-session-id` on later requests. Use a compatible client to manage initialize/initialized, session headers and event-stream responses; a bare JSON POST without initialization is not a complete setup.
 
-Discover the current tool catalog after connecting. Every exposed tool uses the `testportal-<previous-name>` form; previous unprefixed names are unsupported and have no aliases, so update any hard-coded calls.
+Discover the current tool catalog after connecting. The current server exposes `testportal-find-action` and `testportal-execute-action`. Former individual tool names are now action IDs and cannot be called directly. See [migration guidance](tools.md#migrate-existing-clients).
 
 ## Reproducible Node client example
 
@@ -56,7 +56,7 @@ try {
   await client.connect(transport);
   const {tools} = await client.listTools();
   console.log(tools.map(tool => tool.name));
-  const result = await client.callTool({name: 'testportal-check-status', arguments: {}});
+  const result = await client.callTool({name: 'testportal-execute-action', arguments: {actionId: 'testportal-check-status', arguments: {}}});
   if (result.isError) throw new Error('Status tool failed');
   console.log(result.content);
 } finally {

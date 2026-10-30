@@ -7,9 +7,9 @@ sidebar_position: 4
 
 # Test Scenario MCP tools
 
-This reference describes the nine tools registered at backend source baseline `31d9dd97507dce57ac62cb95ea254b9c809f9ff3`, including four tools for scenario-step operations. A source baseline does not prove which tools are deployed on your instance. Connect to the instance and inspect its live `tools/list` response before calling a tool. For transport and authentication setup, see [MCP getting started](getting-started.md).
+This reference describes nine scenario action IDs, including four step operations. Discover their contracts on the connected instance using `testportal-find-action`. For transport and authentication setup, see [MCP getting started](getting-started.md).
 
-All scenario tool names begin with `testportal-`. Previous unprefixed names are unsupported and have no aliases. Refresh your client's tool catalog or update hard-coded names using the [client migration guidance](tools.md#migrate-existing-clients). Inputs and response contracts remain unchanged.
+These IDs are passed to `testportal-execute-action`; direct calls to former tool names are unsupported. See the [client migration guidance](tools.md#migrate-existing-clients).
 
 All IDs are UUID strings. Use the project UUID and scenario UUID for the same project. Each example below shows the `name` and `arguments` passed to MCP `tools/call`; the MCP client handles transport/session fields. UUIDs and content are synthetic.
 
@@ -27,7 +27,7 @@ All IDs are UUID strings. Use the project UUID and scenario UUID for the same pr
 | `testportal-delete-test-scenario-step` | `scenarioId`, `projectId`, `stepId` | Deletes that step and compacts the remaining positions. Returns full scenario detail. |
 | `testportal-reorder-test-scenario-steps` | `scenarioId`, `projectId`, `stepIds` | `stepIds` must contain every current step UUID exactly once, in the requested order. An empty array is valid only for a scenario with no steps. Returns full scenario detail. |
 
-Scenario keys are labels, not identifiers: they may be duplicated. Use UUIDs for scenario and step operations. The list response contains lightweight summaries; use `testportal-get-test-scenario` for structured detail, generated Markdown, steps, and evidence. The list tool accepts a `folder` text filter that matches the displayed folder path or `Unfiled`; it does not accept a folder UUID or suite filter. Scenario creation can assign an existing folder UUID with `folderId`, but MCP does not provide folder management or moves for existing scenarios. MCP also does not manage suites, Spec links, or manual runs.
+Scenario keys are labels, not identifiers: they may be duplicated. Use UUIDs for scenario and step operations. The list response contains lightweight summaries; use `testportal-get-test-scenario` for structured detail, generated Markdown, steps, and evidence. The list action accepts a `folder` text filter that matches the displayed folder path or `Unfiled`; it does not accept a folder UUID or suite filter. Scenario creation can assign an existing folder UUID with `folderId`, but MCP does not provide folder management, moves for existing scenarios, suite management or Spec link management. Manual runs have separate actions.
 
 ## `tools/call` examples
 
@@ -35,16 +35,24 @@ Scenario keys are labels, not identifiers: they may be duplicated. Use UUIDs for
 
 ```json
 {
-  "name": "testportal-create-test-scenario",
+  "name": "testportal-execute-action",
   "arguments": {
-    "projectId": "11111111-1111-4111-8111-111111111111",
-    "title": "Sign-in accepts a valid account",
-    "scenarioKey": "AUTH-01",
-    "priority": "medium",
-    "steps": [
-      {"action": "Open the sign-in page", "expectedResult": "The form is displayed"},
-      {"action": "Submit valid credentials"}
-    ]
+    "actionId": "testportal-create-test-scenario",
+    "arguments": {
+      "projectId": "11111111-1111-4111-8111-111111111111",
+      "title": "Sign-in accepts a valid account",
+      "scenarioKey": "AUTH-01",
+      "priority": "medium",
+      "steps": [
+        {
+          "action": "Open the sign-in page",
+          "expectedResult": "The form is displayed"
+        },
+        {
+          "action": "Submit valid credentials"
+        }
+      ]
+    }
   }
 }
 ```
@@ -53,13 +61,16 @@ Scenario keys are labels, not identifiers: they may be duplicated. Use UUIDs for
 
 ```json
 {
-  "name": "testportal-list-test-scenarios",
+  "name": "testportal-execute-action",
   "arguments": {
-    "projectId": "11111111-1111-4111-8111-111111111111",
-    "search": "AUTH",
-    "page": 1,
-    "limit": 30,
-    "sort": "recently_updated"
+    "actionId": "testportal-list-test-scenarios",
+    "arguments": {
+      "projectId": "11111111-1111-4111-8111-111111111111",
+      "search": "AUTH",
+      "page": 1,
+      "limit": 30,
+      "sort": "recently_updated"
+    }
   }
 }
 ```
@@ -68,14 +79,17 @@ Scenario keys are labels, not identifiers: they may be duplicated. Use UUIDs for
 
 ```json
 {
-  "name": "testportal-get-test-scenario",
+  "name": "testportal-execute-action",
   "arguments": {
-    "scenarioId": "22222222-2222-4222-8222-222222222222",
-    "projectId": "11111111-1111-4111-8111-111111111111",
-    "resultPage": 1,
-    "resultLimit": 10,
-    "issuePage": 2,
-    "issueLimit": 20
+    "actionId": "testportal-get-test-scenario",
+    "arguments": {
+      "scenarioId": "22222222-2222-4222-8222-222222222222",
+      "projectId": "11111111-1111-4111-8111-111111111111",
+      "resultPage": 1,
+      "resultLimit": 10,
+      "issuePage": 2,
+      "issueLimit": 20
+    }
   }
 }
 ```
@@ -84,12 +98,15 @@ Scenario keys are labels, not identifiers: they may be duplicated. Use UUIDs for
 
 ```json
 {
-  "name": "testportal-update-test-scenario",
+  "name": "testportal-execute-action",
   "arguments": {
-    "scenarioId": "22222222-2222-4222-8222-222222222222",
-    "projectId": "11111111-1111-4111-8111-111111111111",
-    "details": "Covers a valid account on the sign-in form",
-    "relatedIssueUrl": null
+    "actionId": "testportal-update-test-scenario",
+    "arguments": {
+      "scenarioId": "22222222-2222-4222-8222-222222222222",
+      "projectId": "11111111-1111-4111-8111-111111111111",
+      "details": "Covers a valid account on the sign-in form",
+      "relatedIssueUrl": null
+    }
   }
 }
 ```
@@ -98,10 +115,13 @@ Scenario keys are labels, not identifiers: they may be duplicated. Use UUIDs for
 
 ```json
 {
-  "name": "testportal-delete-test-scenario",
+  "name": "testportal-execute-action",
   "arguments": {
-    "scenarioId": "22222222-2222-4222-8222-222222222222",
-    "projectId": "11111111-1111-4111-8111-111111111111"
+    "actionId": "testportal-delete-test-scenario",
+    "arguments": {
+      "scenarioId": "22222222-2222-4222-8222-222222222222",
+      "projectId": "11111111-1111-4111-8111-111111111111"
+    }
   }
 }
 ```
@@ -110,12 +130,15 @@ Scenario keys are labels, not identifiers: they may be duplicated. Use UUIDs for
 
 ```json
 {
-  "name": "testportal-append-test-scenario-step",
+  "name": "testportal-execute-action",
   "arguments": {
-    "scenarioId": "22222222-2222-4222-8222-222222222222",
-    "projectId": "11111111-1111-4111-8111-111111111111",
-    "action": "Sign out",
-    "expectedResult": "The sign-in page is shown"
+    "actionId": "testportal-append-test-scenario-step",
+    "arguments": {
+      "scenarioId": "22222222-2222-4222-8222-222222222222",
+      "projectId": "11111111-1111-4111-8111-111111111111",
+      "action": "Sign out",
+      "expectedResult": "The sign-in page is shown"
+    }
   }
 }
 ```
@@ -124,12 +147,15 @@ Scenario keys are labels, not identifiers: they may be duplicated. Use UUIDs for
 
 ```json
 {
-  "name": "testportal-update-test-scenario-step",
+  "name": "testportal-execute-action",
   "arguments": {
-    "scenarioId": "22222222-2222-4222-8222-222222222222",
-    "projectId": "11111111-1111-4111-8111-111111111111",
-    "stepId": "33333333-3333-4333-8333-333333333333",
-    "expectedResult": null
+    "actionId": "testportal-update-test-scenario-step",
+    "arguments": {
+      "scenarioId": "22222222-2222-4222-8222-222222222222",
+      "projectId": "11111111-1111-4111-8111-111111111111",
+      "stepId": "33333333-3333-4333-8333-333333333333",
+      "expectedResult": null
+    }
   }
 }
 ```
@@ -138,11 +164,14 @@ Scenario keys are labels, not identifiers: they may be duplicated. Use UUIDs for
 
 ```json
 {
-  "name": "testportal-delete-test-scenario-step",
+  "name": "testportal-execute-action",
   "arguments": {
-    "scenarioId": "22222222-2222-4222-8222-222222222222",
-    "projectId": "11111111-1111-4111-8111-111111111111",
-    "stepId": "33333333-3333-4333-8333-333333333333"
+    "actionId": "testportal-delete-test-scenario-step",
+    "arguments": {
+      "scenarioId": "22222222-2222-4222-8222-222222222222",
+      "projectId": "11111111-1111-4111-8111-111111111111",
+      "stepId": "33333333-3333-4333-8333-333333333333"
+    }
   }
 }
 ```
@@ -151,14 +180,17 @@ Scenario keys are labels, not identifiers: they may be duplicated. Use UUIDs for
 
 ```json
 {
-  "name": "testportal-reorder-test-scenario-steps",
+  "name": "testportal-execute-action",
   "arguments": {
-    "scenarioId": "22222222-2222-4222-8222-222222222222",
-    "projectId": "11111111-1111-4111-8111-111111111111",
-    "stepIds": [
-      "44444444-4444-4444-8444-444444444444",
-      "33333333-3333-4333-8333-333333333333"
-    ]
+    "actionId": "testportal-reorder-test-scenario-steps",
+    "arguments": {
+      "scenarioId": "22222222-2222-4222-8222-222222222222",
+      "projectId": "11111111-1111-4111-8111-111111111111",
+      "stepIds": [
+        "44444444-4444-4444-8444-444444444444",
+        "33333333-3333-4333-8333-333333333333"
+      ]
+    }
   }
 }
 ```
@@ -222,7 +254,7 @@ Schemas reject unknown fields, invalid UUIDs, invalid pagination, unsupported pr
 
 For updates, omission preserves a value and explicit null clears a nullable value. An update with no editable fields is rejected. Append requires a nonblank action and permits an omitted expected result; it does not accept null there. Step update requires at least one field and accepts null expected result to clear it. Step UUIDs remain stable across edits and reorders; deleting a step compacts positions. Reorder requires the full current set of step UUIDs exactly once. If membership is stale, read the scenario again and deliberately submit the current complete order. Do not assume multiple tool calls form a transaction, and do not automatically replay a create or append after an uncertain response.
 
-Scenario and evidence reads are scoped to `projectId`; a scenario outside that project is not returned. The tools do not accept generated Markdown as input. Folder/suite management, scenario-Spec linking, and manual-run management remain outside this MCP tool set.
+Scenario and evidence reads are scoped to `projectId`; a scenario outside that project is not returned. The actions do not accept generated Markdown as input. Folder/suite management and scenario-Spec linking remain outside this MCP capability.
 
 MCP authentication failures occur at the transport boundary. Input/schema or protocol errors may be returned before a handler runs. Handler failures use the tool error response convention (`isError: true` with text); exact text depends on the failure. Check protocol errors and `isError` rather than assuming every error has the same envelope or message. Success data is serialized in MCP text content; parse the text according to your client SDK.
 

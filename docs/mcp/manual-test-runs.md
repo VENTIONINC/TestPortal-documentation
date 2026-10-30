@@ -7,7 +7,7 @@ sidebar_position: 4
 
 # Manual test runs over MCP
 
-The authenticated MCP server exposes nine tools for starting manual runs, recording outcomes, retrieving history, and selecting executors. These tools store what the client observed. They do not launch a browser, call the API under test, or create automated `Result` records. Check the connected instance's live `tools/list` catalog before relying on availability; documentation and source do not prove that a backend version is deployed.
+The authenticated MCP server offers nine actions for starting manual runs, recording outcomes, retrieving history, and selecting executors. Discover them with `testportal-find-action` and invoke them through `testportal-execute-action`. These actions store what the client observed; they do not launch a browser, call the API under test, or create automated `Result` records. Check live discovery before relying on availability.
 
 All run operations require UUIDs from the intended project. Inputs reject unknown fields. Successful results are JSON in MCP text content. A service failure sets `isError: true`; invalid protocol or schema input fails before the service runs. See [Connect an MCP client](getting-started.md) for endpoint and token setup.
 
@@ -45,19 +45,19 @@ Names are trimmed, nonblank single-line strings up to 100 characters; duplicate 
 For example, call these tools in order, replacing the identifiers with returned values:
 
 ```text
-{"name":"testportal-list-manual-run-environment-profiles","arguments":{"projectId":"11111111-1111-4111-8111-111111111111"}}
-{"name":"testportal-create-manual-run-environment-profile","arguments":{"projectId":"11111111-1111-4111-8111-111111111111","name":"Staging","browser":"Chrome","operatingSystem":"Linux","device":"Laptop","apiEnvironment":"Staging"}}
-{"name":"testportal-start-manual-test-run","arguments":{"projectId":"11111111-1111-4111-8111-111111111111","scenarioId":"22222222-2222-4222-8222-222222222222","environmentProfileId":"33333333-3333-4333-8333-333333333333","browser":"Firefox","device":null,"build":"42","deployment":"canary"}}
-{"name":"testportal-update-manual-run-environment-profile","arguments":{"projectId":"11111111-1111-4111-8111-111111111111","profileId":"33333333-3333-4333-8333-333333333333","operatingSystem":"Windows"}}
-{"name":"testportal-start-manual-test-run","arguments":{"projectId":"11111111-1111-4111-8111-111111111111","scenarioId":"22222222-2222-4222-8222-222222222222","environmentProfileId":"33333333-3333-4333-8333-333333333333"}}
-{"name":"testportal-delete-manual-run-environment-profile","arguments":{"projectId":"11111111-1111-4111-8111-111111111111","profileId":"33333333-3333-4333-8333-333333333333"}}
-{"name":"testportal-get-manual-test-run","arguments":{"projectId":"11111111-1111-4111-8111-111111111111","runId":"44444444-4444-4444-8444-444444444444"}}
-{"name":"testportal-get-manual-test-run","arguments":{"projectId":"11111111-1111-4111-8111-111111111111","runId":"55555555-5555-4555-8555-555555555555"}}
-{"name":"testportal-list-manual-test-runs","arguments":{"projectId":"11111111-1111-4111-8111-111111111111"}}
-{"name":"testportal-list-test-scenario-manual-runs","arguments":{"projectId":"11111111-1111-4111-8111-111111111111","scenarioId":"22222222-2222-4222-8222-222222222222"}}
+{"name":"testportal-execute-action","arguments":{"actionId":"testportal-list-manual-run-environment-profiles","arguments":{"projectId":"11111111-1111-4111-8111-111111111111"}}}
+{"name":"testportal-execute-action","arguments":{"actionId":"testportal-create-manual-run-environment-profile","arguments":{"projectId":"11111111-1111-4111-8111-111111111111","name":"Staging","browser":"Chrome","operatingSystem":"Linux","device":"Laptop","apiEnvironment":"Staging"}}}
+{"name":"testportal-execute-action","arguments":{"actionId":"testportal-start-manual-test-run","arguments":{"projectId":"11111111-1111-4111-8111-111111111111","scenarioId":"22222222-2222-4222-8222-222222222222","environmentProfileId":"33333333-3333-4333-8333-333333333333","browser":"Firefox","device":null,"build":"42","deployment":"canary"}}}
+{"name":"testportal-execute-action","arguments":{"actionId":"testportal-update-manual-run-environment-profile","arguments":{"projectId":"11111111-1111-4111-8111-111111111111","profileId":"33333333-3333-4333-8333-333333333333","operatingSystem":"Windows"}}}
+{"name":"testportal-execute-action","arguments":{"actionId":"testportal-start-manual-test-run","arguments":{"projectId":"11111111-1111-4111-8111-111111111111","scenarioId":"22222222-2222-4222-8222-222222222222","environmentProfileId":"33333333-3333-4333-8333-333333333333"}}}
+{"name":"testportal-execute-action","arguments":{"actionId":"testportal-delete-manual-run-environment-profile","arguments":{"projectId":"11111111-1111-4111-8111-111111111111","profileId":"33333333-3333-4333-8333-333333333333"}}}
+{"name":"testportal-execute-action","arguments":{"actionId":"testportal-get-manual-test-run","arguments":{"projectId":"11111111-1111-4111-8111-111111111111","runId":"44444444-4444-4444-8444-444444444444"}}}
+{"name":"testportal-execute-action","arguments":{"actionId":"testportal-get-manual-test-run","arguments":{"projectId":"11111111-1111-4111-8111-111111111111","runId":"55555555-5555-4555-8555-555555555555"}}}
+{"name":"testportal-execute-action","arguments":{"actionId":"testportal-list-manual-test-runs","arguments":{"projectId":"11111111-1111-4111-8111-111111111111"}}}
+{"name":"testportal-execute-action","arguments":{"actionId":"testportal-list-test-scenario-manual-runs","arguments":{"projectId":"11111111-1111-4111-8111-111111111111","scenarioId":"22222222-2222-4222-8222-222222222222"}}}
 ```
 
-Use the created profile's ID and the started run's ID in subsequent calls. The first run captures Firefox, Linux, null device, Staging, build 42, and canary. A later run started after the update captures Windows instead. Both retain their snapshots after deletion, including in project and scenario history. Build and deployment are run-only. Reconnect and inspect live `tools/list` to determine whether the connected deployment offers these tools.
+Use the created profile's ID and the started run's ID in subsequent calls. The first run captures Firefox, Linux, null device, Staging, build 42, and canary. A later run started after the update captures Windows instead. Both retain their snapshots after deletion, including in project and scenario history. Build and deployment are run-only. Reconnect and use action discovery to check availability.
 
 ## Record an execution
 
@@ -65,14 +65,17 @@ Start a run and retain the identifiers returned by that call. The step IDs in `s
 
 ```json
 {
-  "name": "testportal-start-manual-test-run",
+  "name": "testportal-execute-action",
   "arguments": {
-    "projectId": "11111111-1111-4111-8111-111111111111",
-    "scenarioId": "22222222-2222-4222-8222-222222222222",
-    "environmentProfileId": "33333333-3333-4333-8333-333333333333",
-    "browser": "Firefox",
-    "build": "2026.10.29",
-    "deployment": "canary"
+    "actionId": "testportal-start-manual-test-run",
+    "arguments": {
+      "projectId": "11111111-1111-4111-8111-111111111111",
+      "scenarioId": "22222222-2222-4222-8222-222222222222",
+      "environmentProfileId": "33333333-3333-4333-8333-333333333333",
+      "browser": "Firefox",
+      "build": "2026.10.29",
+      "deployment": "canary"
+    }
   }
 }
 ```
@@ -83,23 +86,29 @@ Retrieve the saved snapshot later by its project and run UUID:
 
 ```json
 {
-  "name": "testportal-get-manual-test-run",
+  "name": "testportal-execute-action",
   "arguments": {
-    "projectId": "11111111-1111-4111-8111-111111111111",
-    "runId": "44444444-4444-4444-8444-444444444444"
+    "actionId": "testportal-get-manual-test-run",
+    "arguments": {
+      "projectId": "11111111-1111-4111-8111-111111111111",
+      "runId": "44444444-4444-4444-8444-444444444444"
+    }
   }
 }
 ```
 
 ```json
 {
-  "name": "testportal-update-manual-test-run-step",
+  "name": "testportal-execute-action",
   "arguments": {
-    "projectId": "11111111-1111-4111-8111-111111111111",
-    "runId": "44444444-4444-4444-8444-444444444444",
-    "stepId": "55555555-5555-4555-8555-555555555555",
-    "status": "passed",
-    "notes": "The expected dashboard appeared"
+    "actionId": "testportal-update-manual-test-run-step",
+    "arguments": {
+      "projectId": "11111111-1111-4111-8111-111111111111",
+      "runId": "44444444-4444-4444-8444-444444444444",
+      "stepId": "55555555-5555-4555-8555-555555555555",
+      "status": "passed",
+      "notes": "The expected dashboard appeared"
+    }
   }
 }
 ```
@@ -108,11 +117,14 @@ Record run-level notes with `testportal-update-manual-test-run`. Finish explicit
 
 ```json
 {
-  "name": "testportal-complete-manual-test-run",
+  "name": "testportal-execute-action",
   "arguments": {
-    "projectId": "11111111-1111-4111-8111-111111111111",
-    "runId": "44444444-4444-4444-8444-444444444444",
-    "status": "passed"
+    "actionId": "testportal-complete-manual-test-run",
+    "arguments": {
+      "projectId": "11111111-1111-4111-8111-111111111111",
+      "runId": "44444444-4444-4444-8444-444444444444",
+      "status": "passed"
+    }
   }
 }
 ```
@@ -125,20 +137,23 @@ Use project history to find a run or filter by captured source identity, outcome
 
 ```json
 {
-  "name": "testportal-list-manual-test-runs",
+  "name": "testportal-execute-action",
   "arguments": {
-    "projectId": "11111111-1111-4111-8111-111111111111",
-    "testScenarioId": "22222222-2222-4222-8222-222222222222",
-    "status": "failed",
-    "startedFrom": "2026-10-01T00:00:00Z",
-    "startedBefore": "2026-11-01T00:00:00Z",
-    "page": 1,
-    "limit": 30
+    "actionId": "testportal-list-manual-test-runs",
+    "arguments": {
+      "projectId": "11111111-1111-4111-8111-111111111111",
+      "testScenarioId": "22222222-2222-4222-8222-222222222222",
+      "status": "failed",
+      "startedFrom": "2026-10-01T00:00:00Z",
+      "startedBefore": "2026-11-01T00:00:00Z",
+      "page": 1,
+      "limit": 30
+    }
   }
 }
 ```
 
-To choose an executor, call `testportal-list-active-users` with `{}` and select one returned active-user UUID. Reassignment may be used on active or completed runs; it preserves run/step outcomes, notes, and their timestamps.
+To choose an executor, execute the `testportal-list-active-users` action with empty arguments and select one returned active-user UUID. Reassignment may be used on active or completed runs; it preserves run/step outcomes, notes, and their timestamps.
 
 Retesting starts a separate run from the scenario's current saved content. It does not copy prior outcomes or notes. Inspect history before retrying an uncertain start request, because the original start may already have created a run.
 
