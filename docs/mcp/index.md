@@ -17,9 +17,9 @@ An upload API key is intended for report submission and does not replace an MCP 
 
 ## Available operations
 
-Registered tools can include result and execution lookup, issue operations, failure review, and Test Scenario operations. Some tools modify data. Review the tools discovered by your client and their input requirements before invoking them.
+The current interface exposes `testportal-find-action` and `testportal-execute-action`. Discover action contracts for result analysis, issues, scenarios and manual runs on demand. Some actions modify data; review the selected contract before executing it.
 
-Tool exports and documentation lists can differ from the tools actually registered by the server. Use the registered tools of your instance when determining availability.
+Deployed versions can differ. Use live discovery to determine what your instance supports.
 
 ## Guides
 
