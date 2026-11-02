@@ -35,12 +35,21 @@ All listed inputs are required unless marked optional.
 | `testportal-get-results-stats` | `projectId`; optional `dates` | Status/entity counts and error/issue statistics |
 | `testportal-get-execution-by-id` | `executionId`, `projectId` | Execution details |
 | `testportal-get-spec-by-id` | `specId`, `projectId` | Spec details and normalized tags |
+| `testportal-list-specs` | `projectId`; optional `search`, `page`, `limit` | Paginated project Specs, including those without Results |
 | `testportal-get-result-error-by-id` | `resultErrorId`, `projectId` | Error details |
 | `testportal-get-assumption-by-id` | `assumptionId`, `projectId` | Issue/error association details |
 
 `testportal-get-issues` accepts category `bug`, `infra`, `performance`, `script` or `other`; pagination fields **are strings**, with schema defaults `"1"` and `"10"`. Statistics bounds `statFrom`/`statTo` are ISO datetimes.
 
 `testportal-get-results` filters are optional strings `tag`, `specId`, `specFile`, `specName`, `environment`, `type`, `status`, `from`, `to`, plus `dates` as an array of strings. Its `page` and `limit` **are numbers**, with schema defaults 1 and 1000. Use ISO dates for date filtering and send an explicit small limit when exploring.
+
+`testportal-list-specs` is available in both core and TMS. It searches trimmed, case-insensitive literal substrings of key, title and file. Its numeric `page` and `limit` default to 1 and 30, with a maximum limit of 100. The response contains `projectId`, `specs`, `total`, `page`, `limit`, and `totalPages`. Specs contain UUID `id`, `projectId`, `key`, `title`, `file`, timestamps, normalized `tags` and `annotations`. Use `id` as `specId` for links; the project-local `key` is a separate identity. There is no new REST listing endpoint. See the [automation link workflow](test-scenarios.md#automation-links).
+
+For example, pass the following to `testportal-execute-action`:
+
+```json
+{"actionId":"testportal-list-specs","arguments":{"projectId":"11111111-1111-4111-8111-111111111111","search":"login","page":1,"limit":30}}
+```
 
 Example MCP `tools/call` payload (the client supplies the negotiated transport/session):
 

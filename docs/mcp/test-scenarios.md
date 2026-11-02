@@ -1,13 +1,13 @@
 ---
 title: Test Scenario MCP tools
-description: Discover and call the nine project-scoped MCP tools for Test Scenario authoring and steps.
+description: Discover and call project-scoped MCP actions for Test Scenario authoring, steps and automation links.
 slug: /mcp/test-scenarios
 sidebar_position: 4
 ---
 
 # Test Scenario MCP tools
 
-This reference describes nine scenario action IDs, including four step operations. Discover their contracts on the connected instance using `testportal-find-action`. For transport and authentication setup, see [MCP getting started](getting-started.md).
+This reference describes scenario action IDs, including step operations and automation links. Discover their contracts on the connected instance using `testportal-find-action`. For transport and authentication setup, see [MCP getting started](getting-started.md).
 
 These IDs are passed to `testportal-execute-action`; direct calls to former tool names are unsupported. See the [client migration guidance](tools.md#migrate-existing-clients).
 
@@ -27,7 +27,21 @@ All IDs are UUID strings. Use the project UUID and scenario UUID for the same pr
 | `testportal-delete-test-scenario-step` | `scenarioId`, `projectId`, `stepId` | Deletes that step and compacts the remaining positions. Returns full scenario detail. |
 | `testportal-reorder-test-scenario-steps` | `scenarioId`, `projectId`, `stepIds` | `stepIds` must contain every current step UUID exactly once, in the requested order. An empty array is valid only for a scenario with no steps. Returns full scenario detail. |
 
-Scenario keys are labels, not identifiers: they may be duplicated. Use UUIDs for scenario and step operations. The list response contains lightweight summaries; use `testportal-get-test-scenario` for structured detail, generated Markdown, steps, and evidence. The list action combines organization ID filters with the `folder` displayed-path text filter and all other filters before sorting and pagination. Its response contains `scenarios`, `total`, `page`, `limit`, and `totalPages`; summaries include current folder and suite metadata. Manual runs have separate actions; scenario-Spec link management is not provided here.
+Scenario keys are labels, not identifiers: they may be duplicated. Use UUIDs for scenario and step operations. The list response contains lightweight summaries; use `testportal-get-test-scenario` for structured detail, generated Markdown, steps, and evidence. The list action combines organization ID filters with the `folder` displayed-path text filter and all other filters before sorting and pagination. Its response contains `scenarios`, `total`, `page`, `limit`, and `totalPages`; summaries include current folder and suite metadata. Manual runs have separate actions.
+
+## Automation links
+
+Discover `testportal-list-specs` or the link actions using `testportal-find-action`, for example `{"query":"scenario automation links","area":"tms"}`. Then pass these arguments to `testportal-execute-action` in order, substituting same-project UUIDs:
+
+```jsonl
+{"actionId":"testportal-list-specs","arguments":{"projectId":"11111111-1111-4111-8111-111111111111","search":"login","page":1,"limit":30}}
+{"actionId":"testportal-add-test-scenario-spec-link","arguments":{"projectId":"11111111-1111-4111-8111-111111111111","scenarioId":"22222222-2222-4222-8222-222222222222","specId":"33333333-3333-4333-8333-333333333333"}}
+{"actionId":"testportal-list-test-scenario-spec-links","arguments":{"projectId":"11111111-1111-4111-8111-111111111111","scenarioId":"22222222-2222-4222-8222-222222222222","page":1,"limit":30}}
+{"actionId":"testportal-get-test-scenario","arguments":{"projectId":"11111111-1111-4111-8111-111111111111","scenarioId":"22222222-2222-4222-8222-222222222222"}}
+{"actionId":"testportal-remove-test-scenario-spec-link","arguments":{"projectId":"11111111-1111-4111-8111-111111111111","scenarioId":"22222222-2222-4222-8222-222222222222","specId":"33333333-3333-4333-8333-333333333333"}}
+```
+
+Use a discovered Spec's UUID `id`, not its project-local `key`. List links returns `{scenarioId, projectId, specs, total, page, limit, totalPages}`; add returns `{scenarioId, specId}`; remove returns `{projectId, scenarioId, specId, removed: true}`. Numeric pagination defaults to page 1 and limit 30, maximum 100. Duplicate additions and missing or repeated removals fail; after an uncertain write, list links before retrying. Removing a link preserves the Spec, Results, Issues, other associations and manual-run history. Inspect the scenario again to see evidence reachable through current links. Its authored `relatedIssueUrl` is separate from observed Issues and does not create Issue evidence. These actions do not execute tests.
 
 ## Folder and suite organization
 
@@ -291,7 +305,7 @@ Schemas reject unknown fields, invalid UUIDs, invalid pagination, unsupported pr
 
 For updates, omission preserves a value and explicit null clears a nullable value. An update with no editable fields is rejected. Append requires a nonblank action and permits an omitted expected result; it does not accept null there. Step update requires at least one field and accepts null expected result to clear it. Step UUIDs remain stable across edits and reorders; deleting a step compacts positions. Reorder requires the full current set of step UUIDs exactly once. If membership is stale, read the scenario again and deliberately submit the current complete order. Do not assume multiple tool calls form a transaction, and do not automatically replay a create or append after an uncertain response.
 
-Scenario and evidence reads are scoped to `projectId`; a scenario outside that project is not returned. The actions do not accept generated Markdown as input. Scenario-Spec linking remains outside this MCP capability.
+Scenario and evidence reads are scoped to `projectId`; a scenario outside that project is not returned. The actions do not accept generated Markdown as input.
 
 MCP authentication failures occur at the transport boundary. Input/schema or protocol errors may be returned before a handler runs. Handler failures use the tool error response convention (`isError: true` with text); exact text depends on the failure. Check protocol errors and `isError` rather than assuming every error has the same envelope or message. Success data is serialized in MCP text content; parse the text according to your client SDK.
 
