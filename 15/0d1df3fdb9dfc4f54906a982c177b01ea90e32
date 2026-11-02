@@ -1,0 +1,16 @@
+docs/mcp/test-scenarios.md
+  h_a7ee58a11b75fb 3,10,30-44,308
+docs/mcp/tools.md
+  h_a7ee58a11b75fb 38,46-53
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "150d1df3fdb9dfc4f54906a982c177b01ea90e32",
+  "prompts": {},
+  "humans": {
+    "h_a7ee58a11b75fb": {
+      "author": "Ihar Mikailau <ihar.mikailau@ventionteams.com>"
+    }
+  }
+}
