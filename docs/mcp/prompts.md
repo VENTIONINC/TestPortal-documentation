@@ -7,7 +7,21 @@ sidebar_position: 4
 
 # TMS workflow prompt
 
-The source supports `tms-workflow-assistant`, a prompt that guides scenario authoring, organization, manual runs, retests and evidence investigation. Use a client that supports MCP prompts. Source support does not establish availability on a deployed instance: reconnect, then check `prompts/list` and discover actions on that instance.
+The source supports `tms-workflow-assistant`, a prompt that guides scenario authoring, organization, manual runs, retests and evidence investigation. Availability depends on the deployed instance.
+
+## Use the Prompts gallery
+
+Open **Prompts** in TestPortal and select **TMS Workflow Assistant**. The builder shows the selected active project's name and UUID; choose an active project if none is selected or switch projects in the selector. Optionally enter a task and choose an execution mode:
+
+- **Not specified** leaves the mode unset, so the consuming assistant can clarify it when needed.
+- **Human guided** means a tester reports observations and outcomes to the assistant.
+- **Client executed** means the consuming AI client observes the application using its own available tools.
+
+The preview updates as you configure the prompt. You can also select **Generate Prompt**, then use **Copy to Clipboard** and paste the result into your AI client. Generation and copying only produce instructions; any execution occurs in the consuming AI client with the necessary access and authorization.
+
+## Use an MCP client
+
+Use a client that supports MCP prompts. Reconnect, then check `prompts/list` and discover actions on that instance.
 
 Retrieve it with `prompts/get`; omit `arguments` or provide an empty object when no context is known:
 
