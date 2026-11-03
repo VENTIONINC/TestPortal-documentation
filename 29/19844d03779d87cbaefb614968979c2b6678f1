@@ -1,0 +1,19 @@
+public-content.json
+  s_88c8683ddd82c5::t_f5e1fc7ee5e164 291-301
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "2919844d03779d87cbaefb614968979c2b6678f1",
+  "prompts": {},
+  "sessions": {
+    "s_88c8683ddd82c5": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1a081-b669-76e2-993d-aae3eac89d90",
+        "model": "gpt-5.6-terra"
+      },
+      "human_author": "Ihar Mikailau <ihar.mikailau@ventionteams.com>"
+    }
+  }
+}
