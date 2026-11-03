@@ -11,6 +11,8 @@ The current authenticated integration exposes two public tools: `testportal-find
 
 Use UUIDs from the intended project. Examples below contain synthetic UUID placeholders and must be replaced. Read-only queries are a useful starting point before enabling any operation that writes data.
 
+For guided TMS workflows, see the [TMS workflow prompt](prompts.md).
+
 Call discovery with `{}` for an overview, with `{"query":"manual step outcome","area":"tms","limit":3}` for bounded search, or with `{"actionId":"testportal-get-results"}` for an exact contract. Areas are `core` and `tms`; shared project, status and time actions belong to both. Search returns at most five definitions (default three), with `hasMore` indicating further matches. A query and action ID cannot be combined; limit applies only to queries.
 
 ## Migrate existing clients

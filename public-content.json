@@ -289,6 +289,17 @@
       ]
     },
     {
+      "path": "docs/mcp/prompts.md",
+      "slug": "/mcp/prompts",
+      "review": "approved",
+      "sources": [
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/29ca0026203f60af06f060689e58e910b0b2e320/src/mcp/prompts/tms-workflow-assistant/v1.0.0.ts",
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/29ca0026203f60af06f060689e58e910b0b2e320/src/mcp/server.ts",
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/29ca0026203f60af06f060689e58e910b0b2e320/src/mcp/normalizePromptRequest.ts",
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/29ca0026203f60af06f060689e58e910b0b2e320/docs/TMS_WORKFLOW_PROMPT_VERIFICATION.md"
+      ]
+    },
+    {
       "path": "docs/mcp/tools.md",
       "slug": "/mcp/tools",
       "review": "approved",
