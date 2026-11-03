@@ -1,0 +1,14 @@
+docs/mcp/prompts.md
+  h_a7ee58a11b75fb 10-24
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "13d55b70e427cb28c69f99f7d56f8bb7bbf1f13b",
+  "prompts": {},
+  "humans": {
+    "h_a7ee58a11b75fb": {
+      "author": "Ihar Mikailau <ihar.mikailau@ventionteams.com>"
+    }
+  }
+}
