@@ -1,0 +1,19 @@
+public-content.json
+  s_40b07ba23e981a::t_950653935587b9 7,12,17,22,27,32,37,42,47,52,57,62,67,72,77,82,87,92,97,102,107,112,117,122,127,132,137,142,147,152,157,162,167
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "a93edfc03af7558cc797001a60e26d5dddf4f6ce",
+  "prompts": {},
+  "sessions": {
+    "s_40b07ba23e981a": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1a0cd-802d-70a1-a5f9-a139e1dbc537",
+        "model": "gpt-6.1-terra"
+      },
+      "human_author": "Ihar Mikailau <ihar.mikailau@ventionteams.com>"
+    }
+  }
+}
