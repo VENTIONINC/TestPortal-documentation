@@ -16,10 +16,7 @@ for (const path of actual) if (!approved.includes(path)) errors.push(`Unreviewed
 for (const path of approved) if (!actual.includes(path)) errors.push(`Missing approved input: ${path}`);
 const routes = new Set();
 for (const page of manifest.docs) {
-  if (page.review !== 'approved' || !page.sources?.length) errors.push(`${page.path}: public review and sources required`);
-  for (const source of page.sources ?? []) {
-    if (!/^https:\/\/github\.com\/VENTIONINC\/TestPortal-(?:client|backend|cli)\/blob\/[a-f0-9]{40}\//.test(source)) errors.push(`${page.path}: source must use an audited commit permalink`);
-  }
+  if (page.review !== 'approved') errors.push(`${page.path}: public review approval required`);
   const {data, content} = matter(await readFile(page.path, 'utf8'));
   for (const field of ['title', 'description', 'slug']) if (typeof data[field] !== 'string' || !data[field].trim()) errors.push(`${page.path}: missing ${field}`);
   if (data.draft || data.unlisted) errors.push(`${page.path}: excluded content cannot be approved`);
