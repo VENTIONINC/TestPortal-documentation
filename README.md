@@ -27,15 +27,15 @@ npm run serve -- --no-open
 
 ## Contribute
 
-Pages live in `docs/`; the homepage and styling live in `src/`. `public-content.json` records reviewed publication inputs and commit-pinned product sources.
+Pages live in `docs/`; the homepage and styling live in `src/`. `public-content.json` records reviewed publication inputs, including page paths, slugs and review approval.
 
 ```bash
 npm run validate
 ```
 
-Validation covers formatting, source metadata, examples, TypeScript, regressions, production links/assets, public-content checks and generated LLM exports. It includes a second build to verify deterministic Markdown output.
+Validation covers formatting, publication metadata, examples, TypeScript, regressions, production links/assets, public-content checks and generated LLM exports. It includes a second build to verify deterministic Markdown output.
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for page authoring, navigation, source review, runtime example verification and dependency maintenance. Submit changes through pull requests to `develop`.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for page authoring, navigation, product accuracy, runtime example verification and dependency maintenance. Submit changes through pull requests to `develop`.
 
 ## LLM exports
 

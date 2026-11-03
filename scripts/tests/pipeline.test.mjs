@@ -23,10 +23,22 @@ test('source pipeline rejects invalid examples, metadata, and unreviewed inputs'
   const {root, write, run} = await fixture(t);
   for (const path of ['docs', 'src', 'static', '.github/workflows']) await mkdir(join(root, path), {recursive: true});
   await write('scripts/cli-contract.json', await readFile(new URL('../cli-contract.json', import.meta.url)));
-  await write('public-content.json', JSON.stringify({docs: [{path: 'docs/check.md', slug: '/check', review: 'approved', sources: [`https://github.com/VENTIONINC/TestPortal-cli/blob/${'a'.repeat(40)}/src/cli.ts`]}], siteFiles: []}));
+  const entry = {path: 'docs/check.md', slug: '/check', review: 'approved'};
+  const manifest = async pageEntry => write('public-content.json', JSON.stringify({docs: [pageEntry], siteFiles: []}));
+  await manifest(entry);
   const page = '---\ntitle: Check\ndescription: Valid fixture\nslug: /check\n---\n\n# Check\n';
   await write('docs/check.md', page);
   assert.equal(run('validate-docs.mjs').status, 0);
+  await manifest({...entry, sources: ['https://example.com/unpinned']});
+  assert.equal(run('validate-docs.mjs').status, 0);
+  for (const review of [undefined, 'pending']) {
+    await manifest({...entry, review});
+    const result = run('validate-docs.mjs');
+    assert.equal(result.status, 1);
+    assert.match(result.stderr, /public review approval required/);
+    assert.doesNotMatch(result.stderr, /source/i);
+  }
+  await manifest(entry);
   await write('docs/check.md', page + '\n```json\n{broken}\n```\n');
   assert.match(run('validate-docs.mjs').stderr, /invalid json example/);
   await write('docs/check.md', page.replace('description: Valid fixture\n', ''));
