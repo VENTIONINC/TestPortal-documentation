@@ -32,6 +32,8 @@ The transport initializes a session, then sends its `mcp-session-id` on later re
 
 Discover the current tool catalog after connecting. The current server exposes `testportal-find-action` and `testportal-execute-action`. Former individual tool names are now action IDs and cannot be called directly. See [migration guidance](tools.md#migrate-existing-clients).
 
+If your client supports prompts, see the [TMS workflow prompt](prompts.md) for discovery and guided workflows.
+
 ## Reproducible Node client example
 
 This example uses the same MCP SDK version as the inspected backend. In a separate example directory with Node.js 22, install it:

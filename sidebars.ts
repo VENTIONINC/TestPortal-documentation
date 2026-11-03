@@ -45,6 +45,7 @@ const sidebars: SidebarsConfig = {
     category('MCP', 'mcp/index', [
       'mcp/getting-started',
       'mcp/tools',
+      'mcp/prompts',
       'mcp/test-scenarios',
       'mcp/manual-test-runs',
     ]),
