@@ -13,6 +13,8 @@ Test Portal exposes an MCP endpoint at `/api/v2/mcp` on your backend instance. I
 
 Obtain an MCP token through the web application's MCP settings. Configure your MCP client with the backend endpoint and the required authorization header using that client's supported format.
 
+See [Connect a client](getting-started.md#generate-a-token) for token replacement, revocation, and account suspension guidance, including how to restore access.
+
 An upload API key is intended for report submission and does not replace an MCP token.
 
 ## Available operations

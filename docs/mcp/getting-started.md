@@ -11,10 +11,12 @@ MCP lets a compatible assistant/client inspect Test Portal data and, for selecte
 
 ## Generate a token
 
-1. Sign in and open **Settings → MCP**.
+1. Sign in with an active account and open **Settings → MCP**. Pending or suspended accounts cannot generate MCP tokens.
 2. Choose **Generate MCP Token** (or **Regenerate Token** if replacing one).
 3. Copy the token and note its displayed expiration. Supply it securely to your MCP client.
-4. Update client credentials after regeneration/revocation. **Revoke** is available in this settings section.
+4. When regenerating, update the token in every client that uses it. The previous token is invalidated for all clients. **Revoke** is available in this settings section; revocation blocks subsequent requests, including those in existing sessions.
+
+Suspending an account revokes its MCP token. After an administrator restores the account, generate a new token and update your clients; the previous token is not restored. These lifecycle protections require a backend version that includes them. Check with your instance maintainer if you are unsure whether that version is deployed.
 
 This is a dedicated MCP token, not an upload API key, browser/API JWT or npm token. Do not publish it in shared client configuration.
 
@@ -72,7 +74,7 @@ Expect tool discovery and a text content block containing status `ok`, a timesta
 
 | Response | Resolution |
 | --- | --- |
-| 401, `Invalid or expired MCP token` | Generate/update the dedicated token and reconnect |
+| 401, `Invalid or expired MCP token` | The token may have expired, been revoked or replaced, or been revoked when the account was suspended. If the account is suspended, ask an administrator to restore it. Once active, use the current token or generate a new one if needed, update every client, and reconnect. |
 | 401, missing/invalid authorization header | Ensure the client sends Bearer authentication on every request |
 | 400, `Bad Request: No valid session ID provided` or `Invalid or missing session ID` | Reinitialize the connection; do not reuse a stale session |
 | 403, `MCP session belongs to a different user` | Open a new session for the intended account |
