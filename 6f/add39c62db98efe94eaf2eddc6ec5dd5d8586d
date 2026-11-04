@@ -1,0 +1,19 @@
+public-content.json
+  s_d58d1c3bd67345::t_40dd1bd59d8d0c 78-81,281,284-286
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "6fadd39c62db98efe94eaf2eddc6ec5dd5d8586d",
+  "prompts": {},
+  "sessions": {
+    "s_d58d1c3bd67345": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1a613-83ce-7df0-91f4-40453682dea4",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "Ihar Mikailau <ihar.mikailau@ventionteams.com>"
+    }
+  }
+}
