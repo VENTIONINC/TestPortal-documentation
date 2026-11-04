@@ -1,0 +1,16 @@
+docs/mcp/getting-started.md
+  h_a7ee58a11b75fb 14,17-19,81
+docs/mcp/index.md
+  h_a7ee58a11b75fb 16-17
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "39d6aab4396d8c91d32aca123a9bcce185cd155b",
+  "prompts": {},
+  "humans": {
+    "h_a7ee58a11b75fb": {
+      "author": "Ihar Mikailau <ihar.mikailau@ventionteams.com>"
+    }
+  }
+}
