@@ -51,7 +51,7 @@ node scripts/verify-cli-examples.mjs "$TEST_PORTAL_AUDITED_CLI" "$TEST_PORTAL_EX
 
 The script extracts the tutorial sample and exact normalizer code blocks, converts the real producer reports, checks counts/names/statuses/retries, then verifies the webhook failure caveat against a local HTTP mock. It never contacts a real instance. Normalizer regressions also run in regular CI using small synthetic inputs, including negative count/state cases.
 
-For MCP reproduction, install SDK 1.29.0 in an isolated directory, copy the page's `connect.mjs`, and configure a local authenticated Streamable HTTP mock with a registered `check-status` tool. Assert the Bearer header on initialization and subsequent requests; verify tools discovery, status content and connection close. Use a disposable Test Portal project to verify actual server behavior.
+For MCP reproduction, install SDK 1.29.0 in an isolated directory, copy the page's `connect.mjs`, and configure a local authenticated Streamable HTTP mock with a registered `testportal-check-status` tool. Assert the Bearer header on initialization and subsequent requests; verify tools discovery, status content and connection close. Use a disposable Test Portal project to verify actual server behavior.
 
 ## Verify product workflows
 

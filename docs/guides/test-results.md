@@ -24,6 +24,8 @@ Find a known test by spec name/file, then inspect its execution card. Read statu
 
 A missing diagnostic tab means that context is unavailable in the loaded data; it does not establish that the integration collected screenshots, source files or logs. The CLI's provider determines which source fields survive conversion.
 
+For the separate Test Management System evidence view, see [scenario automation evidence](scenario-automation-evidence.md). It follows linked Specs and observed Results; it is not a manual-run history.
+
 ## Interpret status and review separately
 
 Pass/fail describes the test outcome. Issue association, category and review describe investigation of that outcome. Confirming an issue association does not rerun the test or change a failure into a pass. Automated suggestions require review against the actual error/context.
