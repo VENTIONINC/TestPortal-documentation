@@ -29,6 +29,8 @@ The effective list query supports issue name/category, execution type and statis
 
 **Categorise with AI** can draft fields when configured by the instance. Review generated wording/category before assignment. Analysis or matching can fail independently of saved test data; retry or enter reviewed details manually.
 
+See [AI-assisted workflows](ai-assisted-workflows.md) for draft review and the controls for polishing issue text.
+
 The category choices correspond to `bug`, `infra` (Environment), `performance`, `script` and `other`. Use a concise issue name and a description grounded in the observed failure, without credentials or private report content.
 
 ## Verify the association

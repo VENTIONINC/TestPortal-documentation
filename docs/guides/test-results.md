@@ -28,6 +28,8 @@ A missing diagnostic tab means that context is unavailable in the loaded data; i
 
 Pass/fail describes the test outcome. Issue association, category and review describe investigation of that outcome. Confirming an issue association does not rerun the test or change a failure into a pass. Automated suggestions require review against the actual error/context.
 
+See [AI-assisted workflows](ai-assisted-workflows.md) for how to generate and review a draft from a stored result.
+
 For example, a failed test may be associated with an infrastructure issue, while another failure is a product bug. The issue category and the test result status answer different questions.
 
 ## Check completeness
