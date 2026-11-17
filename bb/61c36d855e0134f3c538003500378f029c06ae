@@ -1,0 +1,29 @@
+docs/guides/ai-assisted-workflows.md
+  s_cf734cc74c8391::t_bc4d4d041862be 1-35
+docs/guides/index.md
+  s_cf734cc74c8391::t_32410b53e3d440 33
+docs/guides/issues.md
+  s_cf734cc74c8391::t_14a1f5d6384fa9 32-33
+docs/guides/test-results.md
+  s_cf734cc74c8391::t_3881231dcf9708 33-34
+public-content.json
+  s_cf734cc74c8391::t_1a51360237b218 207-221
+sidebars.ts
+  s_cf734cc74c8391::t_3b8309b2f26e53 24
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "bb61c36d855e0134f3c538003500378f029c06ae",
+  "prompts": {},
+  "sessions": {
+    "s_cf734cc74c8391": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1e9a5-eae0-7282-a533-0cea56fa5144",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "Ihar Mikailau <ihar.mikailau@ventionteams.com>"
+    }
+  }
+}
