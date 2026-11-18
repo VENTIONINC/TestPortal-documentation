@@ -26,5 +26,6 @@ Confirm that the upload targeted the same instance and project you are viewing. 
 - [Inspect executions](test-executions.md)
 - [Inspect results](test-results.md)
 - [Investigate issues](issues.md)
+- [AI-assisted workflows](ai-assisted-workflows.md)
 
 See [troubleshooting](../troubleshooting.md) for symptoms and resolutions.

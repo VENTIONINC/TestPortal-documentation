@@ -21,6 +21,7 @@ const sidebars: SidebarsConfig = {
       'guides/test-executions',
       'guides/test-results',
       'guides/issues',
+      'guides/ai-assisted-workflows',
     ]),
     category('Integrations', 'integrations/index', [
       'integrations/playwright',

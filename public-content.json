@@ -199,6 +199,21 @@
       ]
     },
     {
+      "path": "docs/guides/ai-assisted-workflows.md",
+      "slug": "/guides/ai-assisted-workflows",
+      "review": "approved",
+      "sources": [
+        "https://github.com/VENTIONINC/TestPortal-client/blob/22802e11abb029a38dc358055532ca82cf5de2e1/src/components/results/assign-issue-modal/AssignIssueModal.tsx",
+        "https://github.com/VENTIONINC/TestPortal-client/blob/22802e11abb029a38dc358055532ca82cf5de2e1/src/components/results/assign-issue-modal/useAssignIssueModal.ts",
+        "https://github.com/VENTIONINC/TestPortal-client/blob/22802e11abb029a38dc358055532ca82cf5de2e1/src/components/drawers/edit-issue/edit-issue-drawer.tsx",
+        "https://github.com/VENTIONINC/TestPortal-client/blob/22802e11abb029a38dc358055532ca82cf5de2e1/src/components/dashboard/containers/DashboardExportSelect.tsx",
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/da2b73baa138da3c7eada3550f68f8151942fff1/src/services/errorFormatterService.ts",
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/da2b73baa138da3c7eada3550f68f8151942fff1/src/prompts/error-solution/v1.0.0.ts",
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/da2b73baa138da3c7eada3550f68f8151942fff1/src/services/pdfBuilderService.ts",
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/da2b73baa138da3c7eada3550f68f8151942fff1/docs/DEVELOPMENT_GUIDE.md"
+      ]
+    },
+    {
       "path": "docs/guides/test-executions.md",
       "slug": "/guides/test-executions",
       "review": "approved",
