@@ -17,17 +17,17 @@ All IDs are UUID strings. Use the project UUID and scenario UUID for the same pr
 
 | Tool | Required inputs | Optional inputs, defaults, and effects |
 | --- | --- | --- |
-| `testportal-create-test-scenario` | `projectId`, `title` | `folderId` UUID or null; `scenarioKey` (trimmed, 1–100 characters, no line breaks; duplicates allowed); nonblank `details`, `preconditions`, `testData`; `priority`: `low`, `medium`, `high`, or null; absolute HTTP(S) `relatedIssueUrl` or null; `steps` defaults to `[]`, each with nonblank `action` and optional nonblank `expectedResult`. The authenticated user becomes `createdById`. |
-| `testportal-list-test-scenarios` | `projectId` | `page` defaults to 1; `limit` defaults to 30, maximum 100. `folderId` is a folder UUID or `unfiled`; folder UUIDs include descendants by default, or use `includeDescendants: false` for direct assignments. `suiteId` filters by suite UUID. `search` matches title/key. `createdById` filters by any creator UUID, including another user. `scenarioKey`, `title`, `details`, `folder`, and `createdBy` are case-insensitive literal substring filters; blank filters are ignored. `sort` is `recently_created` (default), `recently_updated`, or `title_asc`. Alternatively use `sortField` (`scenarioKey`, `title`, `details`, `folder`, `createdBy`, `createdAt`, `updatedAt`) with `sortDirection` `asc` or `desc` (default `desc`). `sortDirection` requires `sortField`; `sort` cannot be combined with `sortField`. |
+| `testportal-create-test-scenario` | `projectId`, `title` | `folderId` UUID or null; nonblank `details`, `preconditions`, `testData`; `priority`: `low`, `medium` (default), or `high`; absolute HTTP(S) `relatedIssueUrl` or null; `steps` defaults to `[]`, each with nonblank `action` and optional nonblank `expectedResult`. The authenticated user becomes `createdById`. |
+| `testportal-list-test-scenarios` | `projectId` | `page` defaults to 1; `limit` defaults to 30, maximum 100. `folderId` is a folder UUID or `unfiled`; folder UUIDs include descendants by default, or use `includeDescendants: false` for direct assignments. `suiteId` filters by suite UUID. `search` matches title/key. `createdById` filters by one creator UUID. Alternatively, use `createdByIds` with comma-separated distinct creator UUIDs. `priority` accepts one or more comma-separated values from `low`, `medium`, and `high`. Multiple authors and priorities match any value within their respective filters. `scenarioKey`, `title`, `details`, `folder`, and `createdBy` are case-insensitive literal substring filters; blank filters are ignored. `sort` is `recently_created` (default), `recently_updated`, or `title_asc`. Alternatively use `sortField` (`scenarioKey`, `title`, `details`, `folder`, `createdBy`, `createdAt`, `updatedAt`) with `sortDirection` `asc` or `desc` (default `desc`). `sortDirection` requires `sortField`; `sort` cannot be combined with `sortField`. |
 | `testportal-get-test-scenario` | `scenarioId`, `projectId` | `resultPage`/`issuePage` default to 1; `resultLimit`/`issueLimit` default to 30, maximum 100. Result and issue evidence are paginated independently. |
-| `testportal-update-test-scenario` | `scenarioId`, `projectId`, and at least one editable field | Any of `title`, `scenarioKey`, `details`, `preconditions`, `testData`, `priority`, `relatedIssueUrl`. Omitted fields stay unchanged; null clears nullable fields. Text must be nonblank after trimming when supplied. Markdown, steps, folder assignment, and immutable fields are not accepted. |
+| `testportal-update-test-scenario` | `scenarioId`, `projectId`, and at least one editable field | Any of `title`, `details`, `preconditions`, `testData`, `priority`, `relatedIssueUrl`. Omitted fields stay unchanged; null clears nullable fields. Priority requires `low`, `medium`, or `high`. Text must be nonblank after trimming when supplied. Markdown, steps, folder assignment, and immutable fields are not accepted. |
 | `testportal-delete-test-scenario` | `scenarioId`, `projectId` | Deletes the scenario and its links; linked Specs and existing execution evidence are preserved. |
 | `testportal-append-test-scenario-step` | `scenarioId`, `projectId`, `action` | `expectedResult` is optional and nonblank if supplied. Appends one step with a generated stable UUID and returns full scenario detail. |
 | `testportal-update-test-scenario-step` | `scenarioId`, `projectId`, `stepId`, and at least one of `action` or `expectedResult` | Supplied text must be nonblank after trimming. Omitted fields stay unchanged; `expectedResult: null` clears it. Returns full scenario detail. |
 | `testportal-delete-test-scenario-step` | `scenarioId`, `projectId`, `stepId` | Deletes that step and compacts the remaining positions. Returns full scenario detail. |
 | `testportal-reorder-test-scenario-steps` | `scenarioId`, `projectId`, `stepIds` | `stepIds` must contain every current step UUID exactly once, in the requested order. An empty array is valid only for a scenario with no steps. Returns full scenario detail. |
 
-Scenario keys are labels, not identifiers: they may be duplicated. Use UUIDs for scenario and step operations. The list response contains lightweight summaries; use `testportal-get-test-scenario` for structured detail, generated Markdown, steps, and evidence. The list action combines organization ID filters with the `folder` displayed-path text filter and all other filters before sorting and pagination. Its response contains `scenarios`, `total`, `page`, `limit`, and `totalPages`; summaries include current folder and suite metadata. Manual runs have separate actions.
+The server assigns a project-local `TMS-N` key on creation. Use the list action to resolve a key, then pass the returned UUID to read or modify the scenario. Create and update reject caller-supplied keys and null priority. The list response contains lightweight summaries; use `testportal-get-test-scenario` for structured detail, generated Markdown, steps, and evidence. The list action combines organization ID filters with the `folder` displayed-path text filter and all other filters before sorting and pagination. Its response contains `scenarios`, `total`, `page`, `limit`, and `totalPages`; summaries include current folder and suite metadata. Manual runs have separate actions.
 
 ## Automation links
 
@@ -49,11 +49,11 @@ All organization actions require `projectId`. Folder and suite IDs must belong t
 
 | Action ID | Additional inputs | Result and behavior |
 | --- | --- | --- |
-| `testportal-list-test-scenario-folders` | None | Complete folder tree with direct scenario counts. |
+| `testportal-list-test-scenario-folders` | None | Complete folder tree with direct scenario counts and nullable descriptions. |
 | `testportal-create-test-scenario-folder` | `name`; optional nullable `parentId`, `position` | Created folder; null or omitted parent means root. |
 | `testportal-update-test-scenario-folder` | `folderId`; at least one of `name`, nullable `parentId`, `position` | Updated folder. Null parent moves it to root; cycles and depth greater than five levels are rejected. |
 | `testportal-delete-test-scenario-folder` | `folderId`, `disposition` (`parent` or `unfiled`) | `{"deleted": true}`. Direct scenarios move to the parent or Unfiled, children are promoted, and scenarios and suites remain. |
-| `testportal-move-test-scenarios-to-folder` | `scenarioIds`, `folderId` UUID or null | `{"moved": count}`. The entire batch moves atomically; null selects Unfiled. |
+| `testportal-move-test-scenarios-to-folder` | `scenarioIds`, `folderId` UUID or null | `{"moved": count}`. The entire batch moves atomically; null selects Unfiled. Read scenario detail to verify its folder, revision, and authenticated updater. |
 | `testportal-list-test-suites` | None | Suites with ordered members. |
 | `testportal-get-test-suite` | `suiteId` | Current suite metadata and ordered members. |
 | `testportal-create-test-suite` | `name`; optional nullable `description`, `purpose`, `release` | Created suite. |
@@ -63,12 +63,12 @@ All organization actions require `projectId`. Folder and suite IDs must belong t
 | `testportal-remove-test-suite-members` | `suiteId`, `scenarioIds` | Ordered members; non-members are unchanged. |
 | `testportal-reorder-test-suite-members` | `suiteId`, `scenarioIds` | `{"scenarioIds": [...]}` in the new order. Supply every current member exactly once; an empty list is valid for an empty suite. |
 
-Move, add, and remove require 1–100 distinct scenario UUIDs, and fail atomically for invalid or foreign resources. Release is a mutable current label, not a historical snapshot. After an uncertain create, add, or move response, read the current folder tree, suite, or scenario list before deciding whether to retry. Re-read a suite after a stale reorder failure and submit its complete current membership deliberately.
+Move, add, and remove require 1–100 distinct scenario UUIDs, and fail atomically for invalid or foreign resources. Release is a mutable current label, not a historical snapshot. Resolve the folder by its full path and use its description when helpful. Suite names can repeat. Compare each candidate’s description, purpose, release, or members and ask which suite to use if the choice is still ambiguous. Use the selected suite UUID. After a move, add, or remove, read the scenario to verify placement, membership, revision, and updater. When the response is uncertain, use the saved state to decide whether a retry is needed. Re-read a suite after a stale reorder failure and submit its complete current membership deliberately.
 
-For example, the following `tools/call` arguments move scenarios to Unfiled:
+For example, the following `tools/call` arguments move a scenario to a folder resolved from the tree:
 
 ```json
-{"name":"testportal-execute-action","arguments":{"actionId":"testportal-move-test-scenarios-to-folder","arguments":{"projectId":"11111111-1111-4111-8111-111111111111","scenarioIds":["22222222-2222-4222-8222-222222222222"],"folderId":null}}}
+{"name":"testportal-execute-action","arguments":{"actionId":"testportal-move-test-scenarios-to-folder","arguments":{"projectId":"11111111-1111-4111-8111-111111111111","scenarioIds":["22222222-2222-4222-8222-222222222222"],"folderId":"33333333-3333-4333-8333-333333333333"}}}
 ```
 
 To reorder a suite:
@@ -89,8 +89,6 @@ To reorder a suite:
     "arguments": {
       "projectId": "11111111-1111-4111-8111-111111111111",
       "title": "Sign-in accepts a valid account",
-      "scenarioKey": "AUTH-01",
-      "priority": "medium",
       "steps": [
         {
           "action": "Open the sign-in page",
@@ -114,7 +112,9 @@ To reorder a suite:
     "actionId": "testportal-list-test-scenarios",
     "arguments": {
       "projectId": "11111111-1111-4111-8111-111111111111",
-      "search": "AUTH",
+      "search": "sign-in",
+      "createdByIds": "55555555-5555-4555-8555-555555555555,66666666-6666-4666-8666-666666666666",
+      "priority": "high,medium",
       "folderId": "33333333-3333-4333-8333-333333333333",
       "includeDescendants": false,
       "suiteId": "44444444-4444-4444-8444-444444444444",
@@ -254,7 +254,7 @@ Successful tools return MCP text content containing serialized JSON. The followi
 
 ```json
 {
-  "scenarios": [{"id": "22222222-2222-4222-8222-222222222222", "projectId": "11111111-1111-4111-8111-111111111111", "createdById": "55555555-5555-4555-8555-555555555555", "title": "Sign-in accepts a valid account", "scenarioKey": "AUTH-01", "details": null, "createdBy": {"id": "55555555-5555-4555-8555-555555555555", "name": "Example User", "email": "user@example.test"}, "createdAt": "2026-10-01T10:00:00.000Z", "updatedAt": "2026-10-01T10:00:00.000Z"}],
+  "scenarios": [{"id": "22222222-2222-4222-8222-222222222222", "projectId": "11111111-1111-4111-8111-111111111111", "createdById": "55555555-5555-4555-8555-555555555555", "title": "Sign-in accepts a valid account", "scenarioKey": "TMS-42", "details": null, "priority": "medium", "folderId": null, "folderName": null, "matchedSuiteId": null, "createdBy": {"id": "55555555-5555-4555-8555-555555555555", "name": "Example User", "email": "user@example.test"}, "createdAt": "2026-10-01T10:00:00.000Z", "updatedAt": "2026-10-01T10:00:00.000Z"}],
   "total": 1,
   "page": 1,
   "limit": 30,
@@ -262,11 +262,11 @@ Successful tools return MCP text content containing serialized JSON. The followi
 }
 ```
 
-`testportal-get-test-scenario` returns a full scenario and two separately paged evidence envelopes:
+`testportal-get-test-scenario` returns a full scenario and two separately paged evidence envelopes. Read the scenario after an edit to verify its `revision`, safe `updatedBy` identity (ID, name, and email), current `folderId`, and `suites` (IDs and names). Updater fields may be null for historical records. The authenticated session supplies attribution for field and step edits.
 
 ```json
 {
-  "scenario": {"id": "22222222-2222-4222-8222-222222222222", "projectId": "11111111-1111-4111-8111-111111111111", "createdById": "55555555-5555-4555-8555-555555555555", "title": "Sign-in accepts a valid account", "scenarioKey": "AUTH-01", "details": null, "preconditions": null, "testData": null, "priority": "medium", "relatedIssueUrl": null, "steps": [{"id": "33333333-3333-4333-8333-333333333333", "position": 0, "action": "Open the sign-in page", "expectedResult": null}], "contentMd": "# Sign-in accepts a valid account\n", "contentMdHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "contentMdFormatVersion": 1, "createdAt": "2026-10-01T10:00:00.000Z", "updatedAt": "2026-10-01T10:00:00.000Z"},
+  "scenario": {"id": "22222222-2222-4222-8222-222222222222", "projectId": "11111111-1111-4111-8111-111111111111", "createdById": "55555555-5555-4555-8555-555555555555", "title": "Sign-in accepts a valid account", "scenarioKey": "TMS-42", "details": null, "preconditions": null, "testData": null, "priority": "medium", "relatedIssueUrl": null, "steps": [{"id": "33333333-3333-4333-8333-333333333333", "position": 0, "action": "Open the sign-in page", "expectedResult": null}], "revision": 2, "updatedBy": {"id": "66666666-6666-4666-8666-666666666666", "name": "Example Editor", "email": "editor@example.test"}, "folderId": null, "suites": [{"id": "44444444-4444-4444-8444-444444444444", "name": "Sign-in Regression"}], "contentMd": "# Sign-in accepts a valid account\n", "contentMdHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "contentMdFormatVersion": 1, "createdAt": "2026-10-01T10:00:00.000Z", "updatedAt": "2026-10-01T10:00:00.000Z"},
   "resultEvidence": {"scenarioId": "22222222-2222-4222-8222-222222222222", "projectId": "11111111-1111-4111-8111-111111111111", "linkedSpecCount": 1, "results": [], "total": 0, "page": 1, "limit": 30, "totalPages": 0},
   "issueEvidence": {"scenarioId": "22222222-2222-4222-8222-222222222222", "projectId": "11111111-1111-4111-8111-111111111111", "linkedSpecCount": 1, "issues": [], "total": 0, "page": 1, "limit": 30, "totalPages": 0}
 }
@@ -280,7 +280,7 @@ Create, update, and step mutation tools return the complete updated scenario, in
   "projectId": "11111111-1111-4111-8111-111111111111",
   "createdById": "55555555-5555-4555-8555-555555555555",
   "title": "Sign-in accepts a valid account",
-  "scenarioKey": "AUTH-01",
+  "scenarioKey": "TMS-42",
   "details": "Checks a valid account",
   "preconditions": null,
   "testData": null,

@@ -297,7 +297,7 @@
       "slug": "/mcp/prompts",
       "review": "approved",
       "sources": [
-        "https://github.com/VENTIONINC/TestPortal-backend/blob/29ca0026203f60af06f060689e58e910b0b2e320/src/mcp/prompts/tms-workflow-assistant/v1.0.0.ts",
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/f2e3bb28c80f7d709c2c3286432655f22b88015d/src/mcp/prompts/tms-workflow-assistant/v1.0.0.ts",
         "https://github.com/VENTIONINC/TestPortal-backend/blob/29ca0026203f60af06f060689e58e910b0b2e320/src/mcp/server.ts",
         "https://github.com/VENTIONINC/TestPortal-backend/blob/29ca0026203f60af06f060689e58e910b0b2e320/src/mcp/normalizePromptRequest.ts",
         "https://github.com/VENTIONINC/TestPortal-backend/blob/29ca0026203f60af06f060689e58e910b0b2e320/docs/TMS_WORKFLOW_PROMPT_VERIFICATION.md"
@@ -453,15 +453,19 @@
       "review": "approved",
       "sources": [
         "https://github.com/VENTIONINC/TestPortal-backend/blob/e0f721936d67dddbcb25aa95a3053921185ca145/src/mcp/server.ts",
-        "https://github.com/VENTIONINC/TestPortal-backend/blob/e0f721936d67dddbcb25aa95a3053921185ca145/src/mcp/actionCatalog.ts",
-        "https://github.com/VENTIONINC/TestPortal-backend/blob/31d9dd97507dce57ac62cb95ea254b9c809f9ff3/src/mcp/tools/test-scenarios.ts",
-        "https://github.com/VENTIONINC/TestPortal-backend/blob/31d9dd97507dce57ac62cb95ea254b9c809f9ff3/src/mcp/schemas/testScenarioSchemas.ts",
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/f2e3bb28c80f7d709c2c3286432655f22b88015d/src/mcp/actionCatalog.ts",
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/f2e3bb28c80f7d709c2c3286432655f22b88015d/src/mcp/tools/test-scenarios.ts",
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/f2e3bb28c80f7d709c2c3286432655f22b88015d/src/mcp/schemas/testScenarioSchemas.ts",
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/f2e3bb28c80f7d709c2c3286432655f22b88015d/src/mcp/tools/test-scenario-organization.ts",
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/f2e3bb28c80f7d709c2c3286432655f22b88015d/src/schemas/testScenarioSchemas.ts",
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/afc95f7a7a68fc6802c90059fcbc03bb895fa622/src/models/testScenarioModel.ts",
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/afc95f7a7a68fc6802c90059fcbc03bb895fa622/src/services/testScenarioService.ts",
         "https://github.com/VENTIONINC/TestPortal-backend/blob/31d9dd97507dce57ac62cb95ea254b9c809f9ff3/src/handlers/mcpTestScenarioHandler.ts",
         "https://github.com/VENTIONINC/TestPortal-backend/blob/31d9dd97507dce57ac62cb95ea254b9c809f9ff3/src/services/testScenarioIntegrationService.ts",
-        "https://github.com/VENTIONINC/TestPortal-backend/blob/31d9dd97507dce57ac62cb95ea254b9c809f9ff3/src/types/testScenarios.ts",
-        "https://github.com/VENTIONINC/TestPortal-backend/blob/31d9dd97507dce57ac62cb95ea254b9c809f9ff3/__tests__/mcp/testScenarioMcpWorkflow.test.ts",
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/afc95f7a7a68fc6802c90059fcbc03bb895fa622/src/types/testScenarios.ts",
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/f2e3bb28c80f7d709c2c3286432655f22b88015d/__tests__/mcp/testScenarioMcpWorkflow.test.ts",
         "https://github.com/VENTIONINC/TestPortal-backend/blob/31d9dd97507dce57ac62cb95ea254b9c809f9ff3/src/mcp/helpers/mcpHelpers.ts",
-        "https://github.com/VENTIONINC/TestPortal-backend/blob/31d9dd97507dce57ac62cb95ea254b9c809f9ff3/__tests__/mcp/testScenarioMcpTransport.test.ts"
+        "https://github.com/VENTIONINC/TestPortal-backend/blob/f2e3bb28c80f7d709c2c3286432655f22b88015d/__tests__/mcp/testScenarioMcpTransport.test.ts"
       ]
     },
     {
