@@ -1,0 +1,31 @@
+docs/mcp/prompts.md
+  s_23659d38b0bf1e::t_3a89dff99707d0 42-44
+docs/mcp/test-scenarios.md
+  s_23659d38b0bf1e::t_d9aabd1f0c51a0 20-21,23,30,52,56,66,68,71,115-117,257,265,269,283
+public-content.json
+  s_28584ca6c1ae32::t_ded2cb28e245bf 300,456-462,465-466,468
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "c400aaed801b63a2c96ee101d11acbbeeb592294",
+  "prompts": {},
+  "sessions": {
+    "s_23659d38b0bf1e": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a20d17-0a08-75f1-a753-5fe1d586b938",
+        "model": "gpt-6.2-sol"
+      },
+      "human_author": "Ihar Mikailau <ihar.mikailau@ventionteams.com>"
+    },
+    "s_28584ca6c1ae32": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a20861-f19b-7561-b1ba-76f5d8852461",
+        "model": "gpt-6.2-sol"
+      },
+      "human_author": "Ihar Mikailau <ihar.mikailau@ventionteams.com>"
+    }
+  }
+}
