@@ -28,13 +28,21 @@ The detail page displays the saved steps in order. To add, edit, reorder, or rem
 
 ## Generated Markdown
 
-Test Portal generates Markdown from the structured fields and steps for integrations. The application does not provide a Markdown editor or preview for scenarios, and MCP clients cannot submit Markdown as scenario input. Edit the fields and steps instead; generated content updates from those saved values.
+Test Portal generates Markdown from the saved fields and steps. Edit the structured fields in the scenario form. MCP actions expose the generated Markdown in scenario details as read-only output.
+
+To preview a linked scenario:
+
+1. Open **Results**, find a failed automated test result, and click the error message in its execution card.
+2. In the result context dialog, select the test tube icon labeled **Test Scenarios**. Hover over the icon to see its label.
+3. Under **Related Test Scenarios**, click the scenario's key and title. The formatted Markdown appears below the scenario heading in the same dialog.
+
+This list contains scenarios linked to the result's Spec. If it is empty, see [how to link a scenario](scenario-automation-evidence.md#link-or-unlink-a-scenario).
 
 ## Find a scenario
 
 In the catalog, search by title or scenario key. For example, find `TMS-42` within the selected project. For API calls, use the UUID returned by the scenario listing as `scenarioId`. Use column filters to match text in a displayed column, and select a column heading to sort. The initial order is newest first. The catalog paginates results and shows server-calculated totals.
 
-An empty catalog means the selected project has no scenarios. **No scenarios match the current search** means the current search or filters found no rows; clear them to broaden the list. Folder, Unfiled, and suite views are described in [Organize scenarios](scenario-organization.md).
+An empty catalog means the selected project has no scenarios. **No scenarios match the current search** means the current search or filters found no rows; clear them to broaden the list. Folder, No folder, and suite views are described in [Organize scenarios](scenario-organization.md).
 
 ## Continue the workflow
 

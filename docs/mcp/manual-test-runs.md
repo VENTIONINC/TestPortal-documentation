@@ -15,9 +15,9 @@ All run operations require UUIDs from the intended project. Inputs reject unknow
 
 | Tool | Required inputs | Optional inputs and response |
 | --- | --- | --- |
-| `testportal-start-manual-test-run` | `projectId` and either `scenarioIds` (1–100 unique UUIDs) or `suiteId` | Optional `title`, `environmentProperties` (name/value pairs), `browser`, `operatingSystem`, `device`, `apiEnvironment`, `build`, and `deployment`. The session user starts the run. Returns the run and its scenario and step snapshots. |
+| `testportal-start-manual-test-run` | `projectId` and either `scenarioIds` (1–100 unique UUIDs) or `suiteId` | Optional `title`, `environmentProperties` (name/value pairs), `browser`, `operatingSystem`, `device`, `apiEnvironment`, `build`, and `deployment`. The session user starts the run. A suite can include more than 100 scenarios. Returns the run and its scenario and step snapshots. |
 | `testportal-get-manual-test-run` | `projectId`, `runId` | Returns saved run details, including environment values, scenario results, assignees, and step evidence. Each scenario snapshot includes its original `sourceScenarioId`. |
-| `testportal-update-manual-test-run` | `projectId`, `runId`, `title`, `scenarioIds`, `environmentProperties` | Updates an active run. Send the full desired source UUID list and environment properties. Omitting a source UUID removes its snapshot from the run. |
+| `testportal-update-manual-test-run` | `projectId`, `runId`, `title`, `scenarioIds`, `environmentProperties` | Updates an active run. Send the full desired list of 1–10,000 source UUIDs and all desired environment properties, even when changing only the title. Omitting a source UUID removes its snapshot and recorded evidence from the run. |
 | `testportal-update-manual-test-run-step` | `projectId`, `runId`, snapshot `scenarioId`, snapshot `stepId`, and at least one evidence field | Evidence fields are `comment`, `failedFlag`, `failedComment`, `blockedFlag`, and `blockedComment`. This call records what happened at the step. |
 | `testportal-update-manual-test-run-scenario-result` | `projectId`, `runId`, snapshot `scenarioId`, `result` | Results are `untested`, `passed`, `failed`, `blocked`, and `skipped`. The result is attributed to the session user. |
 | `testportal-complete-manual-test-run` | `projectId`, `runId` | Completes the run and marks remaining untested scenarios as skipped. Set optional `requireAllMarked: true` to reject completion when untested scenarios remain. |
@@ -152,6 +152,8 @@ Finish explicitly when all scenarios have a result:
 ```
 
 With `requireAllMarked: true`, completion rejects the request if any scenario is still `untested`. If the tester chooses to finish with scenarios still untested, omit that field or set it to `false`. The server marks those scenarios as `skipped` and preserves the results already recorded.
+
+Completed runs can be reopened from the [web interface](../guides/manual-run-history.md#continue-a-run-or-retest). The MCP catalog exposes completion and read-back.
 
 ## Inspect history and retest
 
