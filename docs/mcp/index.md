@@ -13,17 +13,21 @@ Test Portal exposes an MCP endpoint at `/api/v2/mcp` on your backend instance. I
 
 Obtain an MCP token through the web application's MCP settings. Configure your MCP client with the backend endpoint and the required authorization header using that client's supported format.
 
+See [Connect a client](getting-started.md#generate-a-token) for token replacement, revocation, and account suspension guidance, including how to restore access.
+
 An upload API key is intended for report submission and does not replace an MCP token.
 
 ## Available operations
 
-Registered tools include result and execution lookup, issue operations, and failure review. Some tools modify data. Review the tools discovered by your client and their input requirements before invoking them.
+The current interface exposes `testportal-find-action` and `testportal-execute-action`. Discover action contracts for result analysis, issues, scenarios and manual runs on demand. Some actions modify data; review the selected contract before executing it.
 
-Tool exports and documentation lists can differ from the tools actually registered by the server. Use the registered tools of your instance when determining availability.
+Deployed versions can differ. Use live discovery to determine what your instance supports.
 
 ## Guides
 
 - [Connect a client](getting-started.md)
 - [Tool reference](tools.md)
+- [Test Scenario tools](test-scenarios.md)
+- [Manual test runs](manual-test-runs.md)
 
 See [troubleshooting](../troubleshooting.md) for symptoms and resolutions.

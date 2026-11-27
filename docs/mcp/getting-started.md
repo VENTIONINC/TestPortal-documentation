@@ -11,10 +11,12 @@ MCP lets a compatible assistant/client inspect Test Portal data and, for selecte
 
 ## Generate a token
 
-1. Sign in and open **Settings → MCP**.
+1. Sign in with an active account and open **Settings → MCP**. Pending or suspended accounts cannot generate MCP tokens.
 2. Choose **Generate MCP Token** (or **Regenerate Token** if replacing one).
 3. Copy the token and note its displayed expiration. Supply it securely to your MCP client.
-4. Update client credentials after regeneration/revocation. **Revoke** is available in this settings section.
+4. When regenerating, update the token in every client that uses it. The previous token is invalidated for all clients. **Revoke** is available in this settings section; revocation blocks subsequent requests, including those in existing sessions.
+
+Suspending an account revokes its MCP token. After an administrator restores the account, generate a new token and update your clients; the previous token is not restored. These lifecycle protections require a backend version that includes them. Check with your instance maintainer if you are unsure whether that version is deployed.
 
 This is a dedicated MCP token, not an upload API key, browser/API JWT or npm token. Do not publish it in shared client configuration.
 
@@ -29,6 +31,10 @@ This is a dedicated MCP token, not an upload API key, browser/API JWT or npm tok
 Use your client's current remote-server configuration UI to enter these values. Client-specific JSON formats differ; the table specifies the server contract rather than claiming one universal configuration format. A client supporting only local stdio needs a separately verified bridge; do not launch the backend as a stdio server.
 
 The transport initializes a session, then sends its `mcp-session-id` on later requests. Use a compatible client to manage initialize/initialized, session headers and event-stream responses; a bare JSON POST without initialization is not a complete setup.
+
+Discover the current tool catalog after connecting. The current server exposes `testportal-find-action` and `testportal-execute-action`. Former individual tool names are now action IDs and cannot be called directly. See [migration guidance](tools.md#migrate-existing-clients).
+
+If your client supports prompts, see the [TMS workflow prompt](prompts.md) for discovery and guided workflows.
 
 ## Reproducible Node client example
 
@@ -54,7 +60,7 @@ try {
   await client.connect(transport);
   const {tools} = await client.listTools();
   console.log(tools.map(tool => tool.name));
-  const result = await client.callTool({name: 'check-status', arguments: {}});
+  const result = await client.callTool({name: 'testportal-execute-action', arguments: {actionId: 'testportal-check-status', arguments: {}}});
   if (result.isError) throw new Error('Status tool failed');
   console.log(result.content);
 } finally {
@@ -72,7 +78,7 @@ Expect tool discovery and a text content block containing status `ok`, a timesta
 
 | Response | Resolution |
 | --- | --- |
-| 401, `Invalid or expired MCP token` | Generate/update the dedicated token and reconnect |
+| 401, `Invalid or expired MCP token` | The token may have expired, been revoked or replaced, or been revoked when the account was suspended. If the account is suspended, ask an administrator to restore it. Once active, use the current token or generate a new one if needed, update every client, and reconnect. |
 | 401, missing/invalid authorization header | Ensure the client sends Bearer authentication on every request |
 | 400, `Bad Request: No valid session ID provided` or `Invalid or missing session ID` | Reinitialize the connection; do not reuse a stale session |
 | 403, `MCP session belongs to a different user` | Open a new session for the intended account |
