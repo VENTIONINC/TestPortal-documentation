@@ -1,0 +1,22 @@
+docs/guides/manual-test-runs.md
+  h_a7ee58a11b75fb 3,10,14,20,22,24,26-35
+docs/guides/scenario-organization.md
+  h_a7ee58a11b75fb 3,12,14,16,18-20
+docs/guides/test-scenarios.md
+  h_a7ee58a11b75fb 14,25,27,35
+docs/mcp/manual-test-runs.md
+  h_a7ee58a11b75fb 10,18-27,29,31-33,48-50,55,57,65,69,78,102-103,112,114-132,138,148,154,158,167-171,179,181,183
+docs/mcp/test-scenarios.md
+  h_a7ee58a11b75fb 55
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "a619076bdc052b2934a4256a5e939b6383960630",
+  "prompts": {},
+  "humans": {
+    "h_a7ee58a11b75fb": {
+      "author": "Ihar Mikailau <ihar.mikailau@ventionteams.com>"
+    }
+  }
+}
