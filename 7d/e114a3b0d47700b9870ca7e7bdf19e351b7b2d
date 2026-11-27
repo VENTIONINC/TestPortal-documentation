@@ -1,0 +1,21 @@
+docs/guides/manual-run-history.md
+  s_f9554c08916cbc::t_dcdd1988ce28f2 3,10,14,16,18,20
+docs/mcp/manual-test-runs.md
+  s_f9554c08916cbc::t_b4267605a6993e 18,20,156-157
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "7de114a3b0d47700b9870ca7e7bdf19e351b7b2d",
+  "prompts": {},
+  "sessions": {
+    "s_f9554c08916cbc": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a21907-8b2f-7980-bd45-b93df05d422e",
+        "model": "gpt-6.2-sol"
+      },
+      "human_author": "Aleksandr Degterov <a.degterov@ventionteams.com>"
+    }
+  }
+}
