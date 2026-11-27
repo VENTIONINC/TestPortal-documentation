@@ -52,7 +52,7 @@ All organization actions require `projectId`. Folder and suite IDs must belong t
 | `testportal-list-test-scenario-folders` | None | Complete folder tree with direct scenario counts and nullable descriptions. |
 | `testportal-create-test-scenario-folder` | `name`; optional nullable `parentId`, `position` | Created folder; null or omitted parent means root. |
 | `testportal-update-test-scenario-folder` | `folderId`; at least one of `name`, nullable `parentId`, `position` | Updated folder. Null parent moves it to root; cycles and depth greater than five levels are rejected. |
-| `testportal-delete-test-scenario-folder` | `folderId`, `disposition` (`parent` or `unfiled`) | `{"deleted": true}`. Direct scenarios move to the parent or Unfiled, children are promoted, and scenarios and suites remain. |
+| `testportal-delete-test-scenario-folder` | `folderId` | `{"deleted": true}`. Deletes the folder and its descendants. Scenarios move to Unfiled, with the session user recorded as updater. Suite memberships and run history are preserved. |
 | `testportal-move-test-scenarios-to-folder` | `scenarioIds`, `folderId` UUID or null | `{"moved": count}`. The entire batch moves atomically; null selects Unfiled. Read scenario detail to verify its folder, revision, and authenticated updater. |
 | `testportal-list-test-suites` | None | Suites with ordered members. |
 | `testportal-get-test-suite` | `suiteId` | Current suite metadata and ordered members. |

@@ -1,29 +1,38 @@
 ---
 title: Run a Test Scenario manually
-description: Start a manual run, record step outcomes and environment details, and complete it.
+description: Start a manual run, record scenario results and step observations, and complete it.
 slug: /guides/manual-test-runs
 sidebar_position: 8
 ---
 
 # Run a Test Scenario manually
 
-Open a saved Test Scenario and select **Start manual run**. Review the scenario, optionally enter a **Run key**, choose an environment profile or enter values for this run, then confirm the start. The run key is a readable label; it can be omitted and is not a run UUID.
+Select scenarios in the catalog and choose **Run selected**, or open a suite and choose **Run suite**. Review the selected scenarios, enter a **Run name**, set any environment properties, and choose **Start run**. You can include one scenario or a set of scenarios in the same run.
 
 ## What the run saves
 
-At start, Test Portal copies the scenario title, details, preconditions, test data, source scenario key, and the ordered steps into a new run. The run and its steps get their own IDs. Priority, related issue URL, generated Markdown, and linked automated evidence are not copied into the run snapshot.
+At start, Test Portal saves a copy of each selected scenario's title, details, preconditions, test data, source scenario key, and ordered steps. Each scenario starts as **Untested** and gets its own result in the run.
 
 You can start more than one independent run from a scenario. Later edits to the scenario do not replace the content already captured by a run.
 
 ## Record environment values
 
-Environment values are optional. A saved profile for the selected project can prefill Browser, OS, Device, and API environment; adjust those values for this run before confirming. Enter Build and Deployment directly for the run. You can also enter values without selecting a profile or leave them empty. Profile actions let you save a profile, update the selected profile, or delete it. The run stores the resolved values as its own snapshot, so later profile edits or deletion do not change an existing run.
+Environment properties are optional. The form can prefill them from the latest run in the project. Review the copied values, enter the build for this run, and use **Add property** for any additional values. The run stores its own copy of the properties.
 
-## Execute the steps
+## Record results and observations
 
-For each copied step, set its outcome to **Passed**, **Failed**, **Blocked**, or **Skipped**, and add an optional note. You can also save a run-level note. Step progress shows saved outcomes and highlights unsaved drafts. The assigned Executor can edit execution details, move between steps, and complete the run by choosing its final outcome. When a run has steps, a **Passed** completion requires every step to be **Passed** or **Skipped** and at least one step to be **Passed**. A run with no steps can also be completed as **Passed**. After completion, step results and execution notes are read-only; the run key and Executor can still be changed. A completed run is a record of the manual execution; it is not an automated Result.
+Open a scenario in the run, follow its copied steps, and record the scenario result as **Passed**, **Failed**, **Blocked**, or **Skipped**. Use a step comment or flag to record what happened at a specific step. For example, if a payment returns an error, mark the payment scenario **Failed**, flag the step that failed, and describe the error there.
 
-Save operations can fail independently. Read the feedback before continuing. When the interface says a write may have succeeded but refreshed data is unavailable, refresh and inspect the run before repeating the action. If starting a run has an uncertain result, inspect run history before choosing **Start another run**; the earlier request may already have created a run. Do not assume a retry is safe when the result is uncertain.
+## Complete the run
+
+Choose **Complete run** when the checks are finished. If any scenarios are still **Untested**, the confirmation offers two choices:
+
+- **Keep testing** leaves the run open.
+- **Complete and skip** marks the remaining untested scenarios as **Skipped** and preserves the results already recorded.
+
+Completion locks the scenario results. Reopen the run if you need to change them.
+
+If the interface cannot confirm that a change was saved, refresh the run and check its state before repeating the action. If the server cannot confirm creation, check **Manual runs** before trying **Start run** again. The earlier request may already have created a run.
 
 ## Continue to history
 

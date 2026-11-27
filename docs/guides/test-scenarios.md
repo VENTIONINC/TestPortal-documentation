@@ -11,7 +11,7 @@ Test Scenarios store reusable test instructions in structured fields and ordered
 
 ## Enter scenario details
 
-Use a clear **Title**. The optional **Scenario key** is a readable label for people; it is not an API identifier and duplicate keys are allowed. Routes and integrations identify a scenario with its UUID. You can also enter:
+Use a clear **Title**. When you save a new scenario, Test Portal assigns it a key such as `TMS-42`. The key is unique within the project. You can also enter:
 
 - **Details** to describe the behavior under test.
 - **Priority** as Low, Medium, or High.
@@ -22,9 +22,9 @@ Optional text can be left blank. Scenario fields are saved with the form. When e
 
 ## Add and maintain steps
 
-Each step has an **Action** and an optional **Expected result**. In a new scenario, add and order step drafts in the form; they are saved with the scenario. For an existing scenario, use the step editor on the detail page to add, edit, reorder, or delete individual saved steps. Saving scenario fields and saving existing steps are separate operations. A step needs nonblank action text; expected result may be empty.
+Each step has an **Action** and an optional **Expected result**. In a new scenario, add and order steps in the form, then select **Save scenario**.
 
-The detail page displays saved steps in order. If no steps have been saved, it shows **No steps saved**.
+The detail page displays the saved steps in order. To add, edit, reorder, or remove a step, choose **Edit** to open the scenario form. Select **Save changes** once to save the step changes together with any scenario field changes. If no steps have been saved, the detail page shows **No steps saved**.
 
 ## Generated Markdown
 
@@ -32,7 +32,7 @@ Test Portal generates Markdown from the structured fields and steps for integrat
 
 ## Find a scenario
 
-In the catalog, search by title or scenario key. Use column filters to match text in a displayed column, and select a column heading to sort. The initial order is newest first. The catalog paginates results and shows server-calculated totals.
+In the catalog, search by title or scenario key. For example, find `TMS-42` within the selected project. For API calls, use the UUID returned by the scenario listing as `scenarioId`. Use column filters to match text in a displayed column, and select a column heading to sort. The initial order is newest first. The catalog paginates results and shows server-calculated totals.
 
 An empty catalog means the selected project has no scenarios. **No scenarios match the current search** means the current search or filters found no rows; clear them to broaden the list. Folder, Unfiled, and suite views are described in [Organize scenarios](scenario-organization.md).
 

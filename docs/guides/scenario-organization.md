@@ -1,6 +1,6 @@
 ---
 title: Organize Test Scenarios
-description: Use project folders, Unfiled, and ordered Test Suites to organize scenarios.
+description: Use project folders, the No folder view, and ordered Test Suites to organize scenarios.
 slug: /guides/scenario-organization
 sidebar_position: 6
 ---
@@ -9,13 +9,15 @@ sidebar_position: 6
 
 Folders and suites organize scenarios within the selected project. They do not create copies of scenarios or capture historical execution state.
 
-## Browse folders and Unfiled
+## Browse the folder tree
 
-The catalog offers **All scenarios**, **Unfiled**, a project folder tree, and project suites. A scenario can belong to one folder or remain Unfiled. Selecting a folder can include its descendants; turn off the descendant option to see only scenarios directly in that folder. Search and pagination apply within the current view.
+The catalog offers **All scenarios**, **No folder**, a project folder tree, and project suites. A scenario can belong to one folder or appear in **No folder**. Selecting a folder can include its descendants; turn off the descendant option to see only scenarios directly in that folder. Search and pagination apply within the current view.
 
-Create folders from the catalog and use folder actions to rename, move, or reorder them. Moving a scenario changes its current folder assignment; it keeps the same scenario record, steps, links, and execution history. Use the bulk **Move** action to assign selected scenarios to a folder or Unfiled. It is not offered in suite context.
+Create folders from the catalog and use folder actions to rename, move, or reorder them. Moving a scenario changes its current folder assignment; it keeps the same scenario record, steps, links, and execution history. Use the bulk **Move** action to assign selected scenarios to a folder or **No folder**. It is not offered in suite context.
 
-Deleting a populated folder asks whether its direct scenarios should move to the parent folder or to Unfiled. Child folders are promoted to the deleted folder's parent. This removes the folder only; it does not delete scenarios or child folders.
+To delete a folder, open its actions and choose **Delete folder**. The confirmation covers the selected folder and all its subfolders. For example, deleting **Payments** also deletes its **Refunds** subfolder. Scenarios from both folders move to **No folder**. Their suite memberships and run history stay available.
+
+Deleting a folder [through MCP](../mcp/test-scenarios.md) has the same effect on the folder tree and its scenarios.
 
 ## Curate a suite
 
